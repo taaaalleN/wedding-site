@@ -1,39 +1,30 @@
-import preactLogo from '../../assets/preact.svg';
-import './style.css';
+import couplesImage from "../../assets/usch.jpg";
+import "./style.css";
+
+import { Countdown } from "../../components/Countdown";
 
 export function Home() {
-	return (
-		<div class="home">
-			<a href="https://preactjs.com" target="_blank">
-				<img src={preactLogo} alt="Preact logo" height="160" width="160" />
-			</a>
-			<h1>Get Started building Vite-powered Preact Apps </h1>
-			<section>
-				<Resource
-					title="Learn Preact"
-					description="If you're new to Preact, try the interactive tutorial to learn important concepts"
-					href="https://preactjs.com/tutorial"
-				/>
-				<Resource
-					title="Differences to React"
-					description="If you're coming from React, you may want to check out our docs to see where Preact differs"
-					href="https://preactjs.com/guide/v10/differences-to-react"
-				/>
-				<Resource
-					title="Learn Vite"
-					description="To learn more about Vite and how you can customize it to fit your needs, take a look at their excellent documentation"
-					href="https://vitejs.dev"
-				/>
-			</section>
-		</div>
-	);
-}
-
-function Resource(props) {
-	return (
-		<a href={props.href} target="_blank" class="resource">
-			<h2>{props.title}</h2>
-			<p>{props.description}</p>
-		</a>
-	);
+  return (
+    <div class="home">
+      <section class="section__one">
+        <div class="styled">
+          <h1>Laurita & Patrick</h1>
+          <p class="first">are getting married</p>
+          <p class="second">on</p>
+          <p class="third">13th of June 2026</p>
+        </div>
+        <img src={couplesImage} alt="Couple's image" />
+      </section>
+      <section class="section__two">
+        <div>
+          <Countdown targetDate={"2026-06-13"} />
+        </div>
+      </section>
+      <section class="section__three">
+        <div>
+          <p>Some text</p>
+        </div>
+      </section>
+    </div>
+  );
 }
