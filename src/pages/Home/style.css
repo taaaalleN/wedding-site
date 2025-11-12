@@ -44,6 +44,11 @@ h1 {
 img {
   margin-bottom: 1.5rem;
   width: 100%;
+  max-width: 600px;
+}
+
+.counter__wrapper {
+  height: 100%;
 }
 
 .counter {

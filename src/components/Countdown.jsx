@@ -1,6 +1,6 @@
 import { useState, useEffect } from "preact/hooks";
 
-export function Countdown(props) {
+export function Countdown({ targetDate, countdownText, completionText }) {
   const [counter, setCounter] = useState(null);
   // const [todaysDate, setTodaysDate] = useState(null);
   // const [targetDate, setTargetDate] = useState(null);
@@ -54,43 +54,28 @@ export function Countdown(props) {
   }
 
   useEffect(() => {
-    const timeLeft = calculateTimeLeft(props.targetDate);
+    const timeLeft = calculateTimeLeft(targetDate);
     setCounter(timeLeft);
   }, []);
 
   useEffect(() => {
-    const timeLeft = calculateTimeLeft(props.targetDate);
+    const timeLeft = calculateTimeLeft(targetDate);
     setCounter(timeLeft);
   }, [counter]);
 
-  // useEffect(() => {
-  //   // console.log("targetDate: ", targetDate);
-  //   // console.log("props.targetDate: ", props.targetDate);
-
-  //   if (!props.targetDate) throw new Error("No target date provided");
-
-  //   // setTargetDate(props.targetDate);
-  //   // const targetDateInMs = new Date(targetDate).getTime();
-  //   // const todaysDateInMs = new Date(todaysDate).getTime();
-  //   counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
-  // }, [counter]);
+  if (counter === 0 || counter === null) {
+    return <p>{completionText}</p>;
+  }
 
   return (
-    <div>
-      {counter === 0 || counter === null ? (
-        <p>Wedding time!</p>
-      ) : (
-        <div class="counter__wrapper" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-          <p>Countdown</p>
-          <div>
-            <span class="counter days">{formattedTimeAlternative(counter.days)}&nbsp;</span> days&nbsp;
-            <span class="counter hours">{formattedTimeAlternative(counter.hours)}&nbsp;</span> hours&nbsp;
-            <span class="counter minutes">{formattedTimeAlternative(counter.minutes)}&nbsp;</span> minutes&nbsp;
-            <span class="counter seconds">{formattedTimeAlternative(counter.seconds)}&nbsp;</span> seconds left&nbsp;
-          </div>
-        </div>
-      )}
+    <div class="counter__wrapper" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+      <p>{countdownText}</p>
+      <div>
+        <span class="counter days">{formattedTimeAlternative(counter.days)}&nbsp;</span> days&nbsp;
+        <span class="counter hours">{formattedTimeAlternative(counter.hours)}&nbsp;</span> hours&nbsp;
+        <span class="counter minutes">{formattedTimeAlternative(counter.minutes)}&nbsp;</span> minutes&nbsp;
+        <span class="counter seconds">{formattedTimeAlternative(counter.seconds)}&nbsp;</span> seconds left&nbsp;
+      </div>
     </div>
   );
-  // return <div>{counter === 0 || counter === null ? <p>Wedding time!</p> : <p>Counting down: {formattedTime(counter)} left</p>}</div>;
 }

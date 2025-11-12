@@ -16,9 +16,7 @@ export function Home() {
         <img src={couplesImage} alt="Couple's image" />
       </section>
       <section class="section__two">
-        <div>
-          <Countdown targetDate={"2026-06-13"} />
-        </div>
+        <Countdown targetDate={"2026-06-13"} countdownText={"Wedding in..."} completionText={"Wedding time!"} />
       </section>
       <section class="section__three">
         <div>

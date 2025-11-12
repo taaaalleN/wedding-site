@@ -1,11 +1,13 @@
-import './style.css';
+import "./style.css";
+import { Timeline } from "../../components/Timeline";
 
 export function WeddingDay() {
-	return (
-		<div class="day-before">
-			<h1>Bröllopsdagen</h1>
-			<section>
-			</section>
-		</div>
-	);
+  return (
+    <div class="day-before">
+      <h1>Bröllopsdagen</h1>
+      <section>
+        <Timeline />
+      </section>
+    </div>
+  );
 }
