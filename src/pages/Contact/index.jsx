@@ -1,8 +1,10 @@
-import "./style.css";
+import styles from "./style.module.css";
+import emma from "../../assets/emma_kroon.jpg";
+import maja from "../../assets/maja_carlsson.jpeg";
 
 export function Contact() {
   return (
-    <div class="contact">
+    <div class={styles.contact__wrapper}>
       <h1>Kontakt</h1>
       <section>
         <p>Här kan du hitta kontaktuppgifter till diverse personer som kan vara av intresse.</p>
@@ -12,6 +14,23 @@ export function Contact() {
           <p>Ifall du har några frågor om bröllopslokalen osv.</p>
           <p>Mail: helle@mosbylund.se</p>
           <p>Telefon: +46XXXXXXXX</p>
+        </div>
+        <div>
+          <h3>Toastmadadmememes</h3>
+          <div class={styles.grid}>
+            <div>
+              <img src={emma} alt="Emma Kroon" />
+              <p>Emma Kroon</p>
+              <p>Mail: emma@mosbylund.se</p>
+              <p>Telefon: +46XXXXXXXX</p>
+            </div>
+            <div>
+              <img src={maja} alt="Maja Carlsson" />
+              <p>Maja Carlsson</p>
+              <p>Mail: maja@mosbylund.se</p>
+              <p>Telefon: +46XXXXXXXX</p>
+            </div>
+          </div>
         </div>
         <div>
           <h3>Hotell Mossbylund</h3>

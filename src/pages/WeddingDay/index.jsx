@@ -1,5 +1,5 @@
 import "./style.css";
-import { Timeline } from "../../components/Timeline";
+import { Timeline } from "../../components/Timeline/Timeline";
 
 export function WeddingDay() {
   return (
