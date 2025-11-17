@@ -29,9 +29,10 @@ label span {
 input,
 textarea {
   font: 1em sans-serif;
-  width: 250px;
+  /* width: 250px; */
   box-sizing: border-box;
   border: 1px solid #999999;
+  width: 100%;
 }
 
 input[type="checkbox"],
@@ -52,12 +53,12 @@ textarea {
 }
 
 fieldset {
-  width: 250px;
+  /* width: 250px; */
   box-sizing: border-box;
   border: 1px solid #999999;
 }
 
-button {
+.rsvp button {
   margin-top: 20px;
 }
 

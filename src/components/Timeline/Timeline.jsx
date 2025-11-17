@@ -20,46 +20,58 @@ export function Timeline() {
     const eventOffset = timelineHeight / events.length / 2;
     // eventsContainerRef.current.style.marginTop =
 
-    for (let i = 1; i < events.length; i++) {
-      events[i].style.marginTop = `${eventOffset}px`;
-      // const y = gap * (i + 1);
-      // events[i].style.marginTop = `${y}px`;
-      // events[i].style.position = "absolute";
-      // events[i].style.top = `${y}px`;
-      // events[i].style = "translateY(-50%)";
-    }
+    // for (let i = 1; i < events.length; i++) {
+    //   events[i].style.marginTop = `${eventOffset}px`;
+    //   if (i == events.length - 1) {
+    //     events[i].style.marginBottom = `${eventOffset}px`;
+    //   }
+    //   // const y = gap * (i + 1);
+    //   // events[i].style.marginTop = `${y}px`;
+    //   // events[i].style.position = "absolute";
+    //   // events[i].style.top = `${y}px`;
+    //   // events[i].style = "translateY(-50%)";
+    // }
   }, []);
 
   return (
-    <div class="timeline__container" style={{ position: "relative", height: "800px", border: "1px dotted grey" }} ref={timelineRef}>
+    <div class="timeline__container" ref={timelineRef}>
       Timeline
       <div class="timeline">
         <div class="event" ref={addToRefs}>
-          Förmingel
+          <span>Förmingel</span>
+          <span>14:30</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Ceremoni
+          <span>Ceremoni</span>
+          <span>15:00</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Glass & mingel
+          <span>Glass & mingel</span>
+          <span>15:30</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Middag
+          <span>Middag</span>
+          <span>17:00</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Tårta
+          <span>Tårta</span>
+          <span>22:00</span>
         </div>
         <div class="event" ref={addToRefs}>
-          First dance
+          <span>First dance</span>
+          <span>22:30</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Party
+          <span>Party</span>
+          <span>23:00</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Körv med bröööd
+          <span>Körv med bröööd</span>
+          <span>00:00</span>
         </div>
         <div class="event" ref={addToRefs}>
-          Dags att gå hem
+          <span>Dags att gå hem</span>
+          <span>01:00</span>
         </div>
       </div>
     </div>

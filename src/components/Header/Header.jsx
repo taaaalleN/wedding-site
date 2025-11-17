@@ -1,21 +1,27 @@
 import { useLocation } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
+import styles from "./style.module.css";
 
 export function Header() {
   const { url } = useLocation();
-
   const [scroll, setScroll] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 50);
-    });
+    const onScroll = () => setScroll(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header class={scroll ? "sticky" : ""}>
-      <nav>
+    <header class={`${styles.header} ${scroll ? styles.sticky : ""}`}>
+      <button class={`${styles.toggleNav} ${navOpen ? styles.open : ""}`} onClick={() => setNavOpen((prev) => !prev)} aria-expanded={navOpen} aria-controls="main-nav">
+        {navOpen ? "Close" : "Open"}
+      </button>
+
+      <nav id="main-nav" class={navOpen ? styles.open : ""}>
         <a href="/" class={url == "/" && "active"}>
-          Home
+          Hem
         </a>
         <a href="/innan-brollopsdagen" class={url == "/innan-brollopsdagen" && "active"}>
           Innan bröllopsdagen
@@ -28,9 +34,6 @@ export function Header() {
         </a>
         <a href="/kontakt" class={url == "/kontakt" && "active"}>
           Kontakt
-        </a>
-        <a href="/404" class={url == "/404" && "active"}>
-          404
         </a>
       </nav>
     </header>

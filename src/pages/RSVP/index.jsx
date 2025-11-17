@@ -1,5 +1,5 @@
 import "./style.css";
-import { RSVPForm } from "../../components/RSVPForm";
+import { RSVPForm } from "../../components/RSVPForm/RSVPForm";
 
 export function RSVP() {
   return (
