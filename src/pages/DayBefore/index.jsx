@@ -1,4 +1,4 @@
-import "./style.css";
+import styles from "./DaysBefore.module.css";
 
 export function DayBefore() {
   return (

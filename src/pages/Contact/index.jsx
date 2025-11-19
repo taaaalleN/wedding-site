@@ -1,4 +1,4 @@
-import styles from "./style.module.css";
+import styles from "./Contact.module.css";
 import emma from "../../assets/emma_kroon.jpg";
 import maja from "../../assets/maja_carlsson.jpeg";
 

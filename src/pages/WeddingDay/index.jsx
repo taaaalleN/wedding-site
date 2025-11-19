@@ -1,4 +1,4 @@
-import "./style.css";
+import styles from "./WeddingDay.module.css";
 import { Timeline } from "../../components/Timeline/Timeline";
 
 export function WeddingDay() {

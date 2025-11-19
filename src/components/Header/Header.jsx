@@ -1,6 +1,6 @@
+import styles from "./Header.module.css";
 import { useLocation } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
-import styles from "./style.module.css";
 
 export function Header() {
   const { url } = useLocation();
