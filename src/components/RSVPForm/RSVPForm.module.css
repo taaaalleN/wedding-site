@@ -2,105 +2,8 @@
   display: flex;
 }
 
-@font-face {
-  font-family: "NorseFont";
-  src: url(./assets/fonts/Norse-Bold.otf);
-}
-
-:root {
-  --main-accent-color: #596d48;
-  --main-border-radius: 5px;
-  --input-default-border-color: #e5e7eb;
-  --input-focus-border-color: #1d4ed8;
-  --section-background-color: #f9fafb;
-  --form-background-color: #ffffff;
-  --dark-text: #333333;
-  --light-text: #ffffff;
-  --right-side-padding: 3rem;
-}
-
-html,
-body,
-::before,
-::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "NorseFont", sans-serif;
-  height: 100vh;
-}
-
-#main {
-  background-color: rgb(23, 52, 77);
-  height: 100%;
-  color: #fff;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-}
-
-.header-sidebar {
-  background-image: url(./assets/imgs/cat.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  height: 200px;
-  margin-top: 30%;
-}
-
-.logo {
-  /* background-image: url("https://cdn.statically.io/gh/TheOdinProject/curriculum/5f37d43908ef92499e95a9b90fc3cc291a95014c/html_css/project-sign-up-form/odin-lined.png"); */
-  background-repeat: no-repeat;
-  background-size: 100px;
-  height: 150px;
-  width: auto;
-}
-
-.logo-text {
-  font-size: 6.4rem;
-}
-
-.right {
-  font-family: "Arial", "sans-serif";
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  background-color: var(--section-background-color);
-  color: var(--dark-text);
-}
-
-.right > * {
-  padding-left: var(--right-side-padding);
-}
-
-.right a {
-  color: var(--main-accent-color);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.description {
-  max-width: 80ch;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-#create-account-form {
-  background-color: var(--form-background-color);
-  box-shadow: 5px 5px 12px -5px rgba(0, 0, 0, 0.4);
-  padding: 1rem var(--right-side-padding) 3rem;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  position: relative;
+.rsvpForm {
+  text-align: left;
 }
 
 .form-rows {
@@ -155,6 +58,26 @@ body {
   color: red;
 }
 
+.validIcon {
+  /* content: "✖";
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  width: 10px;
+  height: 10px; */
+  color: green;
+}
+
+.errorLogo {
+  /* content: "✖";
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  width: 10px;
+  height: 10px; */
+  color: red;
+}
+
 #password.error + span + .error-span::after {
   position: absolute;
   bottom: -20px;
@@ -190,7 +113,7 @@ body {
 }
 
 form button {
-  background-color: var(--main-accent-color);
+  background-color: var(--main-green);
   color: #fff;
   border: 0;
   padding: 1rem 3rem;
@@ -203,18 +126,17 @@ button {
   border-radius: var(--main-border-radius);
 }
 
+.textarea__wrapper textarea {
+  display: flex;
+  flex-direction: column;
+  resize: none;
+  width: 100%;
+}
+
 @media (max-width: 768px) {
   #main {
     display: grid;
     grid-template-columns: 1fr;
-  }
-
-  .logo-container {
-    margin-top: 10%;
-  }
-
-  .right {
-    padding-bottom: 5rem;
   }
 }
 
