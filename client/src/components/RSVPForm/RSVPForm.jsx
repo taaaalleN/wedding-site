@@ -37,11 +37,21 @@ export function RSVPForm() {
     e.preventDefault();
     // const formData = new FormData(e.currentTarget); // Från Preact-guiden - osäker på vad göra med denna
     e.currentTarget.reset();
+
     resetForm();
   };
 
   const resetForm = () => {
     setInputs(defaultState);
+  };
+
+  const sendFormData = async (formData) => {
+    const response = await fetch("/test", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    });
+
+    console.log(response);
   };
 
   const isFormValid = Object.values(validationErrors).every((error) => !error);
