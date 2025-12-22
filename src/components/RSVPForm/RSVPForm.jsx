@@ -1,7 +1,17 @@
 import styles from "./RSVPForm.module.css";
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
+import { db } from "../../../firebase.js";
+import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 
-const defaultState = { name: "", plus_one: "", food: "Kött", carpool: "", sleepover: "", arriveFriday: "", songWishlist: "" };
+const defaultState = {
+  name: "",
+  plus_one: "",
+  food: "Kött",
+  carpool: "",
+  sleepover: "",
+  arriveFriday: "",
+  songWishlist: "",
+};
 
 export function RSVPForm() {
   const [inputs, setInputs] = useState(defaultState);
@@ -10,7 +20,36 @@ export function RSVPForm() {
     food: "",
   });
 
-  // // Regex validations
+  const invitesCollectionRef = collection(db, "invites");
+  const [inviteList, setInviteList] = useState([]);
+
+  const getInviteList = async () => {
+    try {
+      const data = await getDocs(invitesCollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setInviteList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getInviteList();
+  }, []);
+
+  const onSubmitInvite = async () => {
+    try {
+      await addDoc(invitesCollectionRef, inputs);
+      getInviteList();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Regex validations
   const nameRegex = /^\D{2,}$/;
 
   const handleChange = (e) => {
@@ -36,6 +75,7 @@ export function RSVPForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // const formData = new FormData(e.currentTarget); // Från Preact-guiden - osäker på vad göra med denna
+    onSubmitInvite();
     e.currentTarget.reset();
     resetForm();
   };
@@ -76,19 +116,43 @@ export function RSVPForm() {
         <div class={styles.radio}>
           <div>
             <label for="meat">
-              <input type="radio" id="meat" name="food" value="Kött" required checked={inputs.food === "Kött"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="meat"
+                name="food"
+                value="Kött"
+                required
+                checked={inputs.food === "Kött"}
+                onChange={handleChange}
+              />
               Kött
             </label>
           </div>
           <div>
             <label for="fish">
-              <input type="radio" id="fish" name="food" value="Fisk" required checked={inputs.food === "Fisk"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="fish"
+                name="food"
+                value="Fisk"
+                required
+                checked={inputs.food === "Fisk"}
+                onChange={handleChange}
+              />
               Fisk
             </label>
           </div>
           <div>
             <label for="veg">
-              <input type="radio" id="veg" name="food" value="Veg" required checked={inputs.food === "Veg"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="veg"
+                name="food"
+                value="Veg"
+                required
+                checked={inputs.food === "Veg"}
+                onChange={handleChange}
+              />
               Veg
             </label>
           </div>
@@ -99,13 +163,27 @@ export function RSVPForm() {
         <div class={styles.radio}>
           <div>
             <label for="yes">
-              <input type="radio" id="yes" name="carpool" value="Yes" checked={inputs.carpool === "Yes"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="yes"
+                name="carpool"
+                value="Yes"
+                checked={inputs.carpool === "Yes"}
+                onChange={handleChange}
+              />
               Ja
             </label>
           </div>
           <div>
             <label for="no">
-              <input type="radio" id="no" name="carpool" value="No" checked={inputs.carpool === "No"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="no"
+                name="carpool"
+                value="No"
+                checked={inputs.carpool === "No"}
+                onChange={handleChange}
+              />
               Nej
             </label>
           </div>
@@ -116,13 +194,27 @@ export function RSVPForm() {
         <div class={styles.radio}>
           <div>
             <label for="yes">
-              <input type="radio" id="yes" name="sleepover" value="Yes" checked={inputs.sleepover === "Yes"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="yes"
+                name="sleepover"
+                value="Yes"
+                checked={inputs.sleepover === "Yes"}
+                onChange={handleChange}
+              />
               Ja
             </label>
           </div>
           <div>
             <label for="no">
-              <input type="radio" id="no" name="sleepover" value="No" checked={inputs.sleepover === "No"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="no"
+                name="sleepover"
+                value="No"
+                checked={inputs.sleepover === "No"}
+                onChange={handleChange}
+              />
               Nej
             </label>
           </div>
@@ -133,13 +225,27 @@ export function RSVPForm() {
         <div class={styles.radio}>
           <div>
             <label for="yes">
-              <input type="radio" id="yes" name="arriveFriday" value="Yes" checked={inputs.arriveFriday === "Yes"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="yes"
+                name="arriveFriday"
+                value="Yes"
+                checked={inputs.arriveFriday === "Yes"}
+                onChange={handleChange}
+              />
               Ja
             </label>
           </div>
           <div>
             <label for="no">
-              <input type="radio" id="no" name="arriveFriday" value="No" checked={inputs.arriveFriday === "No"} onChange={handleChange} />
+              <input
+                type="radio"
+                id="no"
+                name="arriveFriday"
+                value="No"
+                checked={inputs.arriveFriday === "No"}
+                onChange={handleChange}
+              />
               Nej
             </label>
           </div>
@@ -147,9 +253,18 @@ export function RSVPForm() {
       </fieldset>
       <div class={styles.textarea__wrapper}>
         <label for="songWishlist">Finns det några låtar du önskar ska spelas under discodansen?</label>
-        <textarea name="songWishlist" id="songWishlist" value={inputs.songWishlist} onInput={handleChange} rows={10}></textarea>
+        <textarea
+          name="songWishlist"
+          id="songWishlist"
+          value={inputs.songWishlist}
+          onInput={handleChange}
+          rows={10}
+        ></textarea>
       </div>
-      <button style={isFormValid ? { backgroundColor: "" } : { opacity: "0.5", cursor: "not-allowed" }} disabled={!isFormValid}>
+      <button
+        style={isFormValid ? { backgroundColor: "" } : { opacity: "0.5", cursor: "not-allowed" }}
+        disabled={!isFormValid}
+      >
         Skicka in!
       </button>
     </form>
