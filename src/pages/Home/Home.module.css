@@ -6,6 +6,14 @@ p {
   width: 100%;
 }
 
+.heroImage {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  margin-bottom: 1.5em;
+}
+
 .section__one {
   padding: 5em;
 }
@@ -16,16 +24,18 @@ p {
 }
 
 .section__three {
-  height: 500px;
+  /* height: 500px; */
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 2rem;
   margin: 0;
 }
 
 .section__one p {
-  font-size: 2.75rem;
+  /* font-size: 2.75rem; */
+  max-width: 80ch;
+  margin: 1em auto;
 }
 
 .first {
@@ -40,12 +50,6 @@ h1 {
 }
 
 /* Below this is default styling */
-
-img {
-  margin-bottom: 1.5rem;
-  width: 100%;
-  max-width: 600px;
-}
 
 .counter__wrapper {
   height: 100%;
