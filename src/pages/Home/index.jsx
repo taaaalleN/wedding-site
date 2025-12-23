@@ -28,7 +28,7 @@ export function Home() {
         </div>
       </section>
       <section class={styles.section__two}>
-        <Countdown targetDate={"2026-06-13"} countdownText={"Wedding in..."} completionText={"Wedding time!"} />
+        <Countdown targetDate={"2026-06-13"} countdownText={"Bröllopsdag om..."} completionText={"Bröllopsdags!"} />
       </section>
       <section class={styles.section__three}>
         <Timeline title="Bröllopsdagen" />

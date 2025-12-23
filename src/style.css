@@ -36,6 +36,7 @@ h4 {
   font-family: var(--font-titles);
   font-weight: 400;
   font-style: normal;
+  margin: 0;
 }
 
 body {
@@ -64,6 +65,15 @@ main {
 
 button:hover {
   cursor: pointer;
+}
+
+.counter__wrapper {
+  height: 100%;
+}
+
+.counter {
+  font-size: 2em;
+  font-weight: bold;
 }
 
 @media (max-width: 639px) {

@@ -14,22 +14,28 @@ p {
   margin-bottom: 1.5em;
 }
 
+section {
+  padding: 3em 5em;
+}
+
 .section__one {
-  padding: 5em;
+  /* padding: 5em; */
 }
 
 .section__two {
   background-color: var(--main-green-alt);
-  height: 400px;
+  /* height: 400px; */
 }
 
 .section__three {
   /* height: 500px; */
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
   font-size: 2rem;
-  margin: 0;
 }
 
 .section__one p {
@@ -47,16 +53,6 @@ h1 {
 
 .third {
   margin-top: -0.3em;
-}
-
-/* Below this is default styling */
-
-.counter__wrapper {
-  height: 100%;
-}
-
-.counter {
-  font-size: 2em;
 }
 
 @media (max-width: 639px) {

@@ -16,7 +16,9 @@ export function Countdown({ targetDate, countdownText, completionText }) {
 
   const formattedTime = (timeLeft) => {
     //Return combined values as string in format mm:ss
-    return `${padTime(timeLeft.days)} days ${padTime(timeLeft.hours)} hours ${padTime(timeLeft.minutes)} minutes ${padTime(timeLeft.seconds)} seconds`;
+    return `${padTime(timeLeft.days)} days ${padTime(timeLeft.hours)} hours ${padTime(
+      timeLeft.minutes
+    )} minutes ${padTime(timeLeft.seconds)} seconds`;
   };
 
   const formattedTimeAlternative = (timeLeft) => {
@@ -68,13 +70,21 @@ export function Countdown({ targetDate, countdownText, completionText }) {
   }
 
   return (
-    <div class="counter__wrapper" style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-      <p>{countdownText}</p>
-      <div>
-        <span class="counter days">{formattedTimeAlternative(counter.days)}&nbsp;</span> days&nbsp;
-        <span class="counter hours">{formattedTimeAlternative(counter.hours)}&nbsp;</span> hours&nbsp;
-        <span class="counter minutes">{formattedTimeAlternative(counter.minutes)}&nbsp;</span> minutes&nbsp;
-        <span class="counter seconds">{formattedTimeAlternative(counter.seconds)}&nbsp;</span> seconds left&nbsp;
+    <div class="counter__wrapper" style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+      <h3>{countdownText}</h3>
+      <div style={{ display: "flex", justifyContent: "space-around", width: "100%" }}>
+        <p>
+          <span class="counter days">{formattedTimeAlternative(counter.days)}</span> dagar&nbsp;
+        </p>
+        <p>
+          <span class="counter hours">{formattedTimeAlternative(counter.hours)}</span> timmar&nbsp;
+        </p>
+        <p>
+          <span class="counter minutes">{formattedTimeAlternative(counter.minutes)}</span> minuter&nbsp;
+        </p>
+        <p>
+          <span class="counter seconds">{formattedTimeAlternative(counter.seconds)}</span> sekunder&nbsp;
+        </p>
       </div>
     </div>
   );
