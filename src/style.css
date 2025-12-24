@@ -29,6 +29,10 @@
   --font-titles: "Calligraffitti", cursive;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 h1,
 h2,
 h3,
@@ -59,6 +63,11 @@ main {
   text-align: center;
   background-color: #fff;
   color: #333;
+  /* box-shadow: 0px 0px 20px #87958cb3; */
+  width: 100%;
+}
+
+section {
   box-shadow: 0px 0px 20px #87958cb3;
   width: 100%;
 }

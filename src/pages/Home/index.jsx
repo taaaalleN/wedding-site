@@ -3,12 +3,14 @@ import couplesImage from "../../assets/hero_1.jpg";
 
 import { Countdown } from "../../components/Countdown";
 import { Timeline } from "../../components/Timeline/Timeline";
+import { Header } from "../../components/Header/Header.jsx";
 
 export function Home() {
   return (
     <div class={styles.home}>
       <section class={styles.section__one}>
         <img class={styles.heroImage} src={couplesImage} alt="Couple's image" />
+        <Header />
         <div class="styled">
           <h1>Vi ska gifta oss!</h1>
           <p>

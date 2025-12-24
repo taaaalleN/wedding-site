@@ -11,11 +11,14 @@ p {
   width: 100%;
   object-fit: cover;
   object-position: center 36%;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
+  margin-bottom: 0;
 }
 
 section {
   padding: 3em 5em;
+  position: relative;
+  z-index: 2;
 }
 
 .section__one {
@@ -24,6 +27,8 @@ section {
 
 .section__two {
   background-color: var(--main-green-alt);
+  box-shadow: none;
+  z-index: 0;
   /* height: 400px; */
 }
 
@@ -56,11 +61,11 @@ h4 {
 }
 
 @media (max-width: 639px) {
-  .home section {
+  /* .home section {
     margin-top: 5rem;
     grid-template-columns: 1fr;
     row-gap: 1rem;
-  }
+  } */
 }
 
 @media (prefers-color-scheme: dark) {

@@ -4,9 +4,9 @@ import maja from "../../assets/maja_carlsson.jpeg";
 
 export function Contact() {
   return (
-    <div class={styles.contact__wrapper}>
+    <section class={styles.contact__wrapper}>
       <h1>Kontakt</h1>
-      <section>
+      <div>
         <p>Här kan du hitta kontaktuppgifter till diverse personer som kan vara av intresse.</p>
         <div>
           <h3>Helle</h3>
@@ -46,7 +46,7 @@ export function Contact() {
           <p>Mail: paulau@gmail.com</p>
           <p>Telefon: +46XXXXXXXX</p>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
