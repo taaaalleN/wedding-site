@@ -60,12 +60,14 @@ h4 {
   margin-top: -0.3em;
 }
 
-@media (max-width: 639px) {
-  /* .home section {
-    margin-top: 5rem;
-    grid-template-columns: 1fr;
-    row-gap: 1rem;
-  } */
+@media (max-width: 768px) {
+  .heroImage {
+    height: 200px;
+  }
+
+  section {
+    padding: 3em 0;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

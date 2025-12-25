@@ -8,7 +8,13 @@ div + div {
   margin: 0;
 }
 
-.contact__wrapper img {
+.contact__wrapper .toastmadame_img {
   width: 300px;
   height: auto;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: auto;
+  }
 }

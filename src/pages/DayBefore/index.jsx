@@ -1,8 +1,13 @@
 import styles from "./DaysBefore.module.css";
 
+import couplesImage from "../../assets/hero_1.jpg";
+import { Header } from "../../components/Header/Header.jsx";
+
 export function DayBefore() {
   return (
     <section class="day-before">
+      <img class="heroImage" src={couplesImage} alt="Couple's image" />
+      <Header />
       <h1>Innan bröllopsdagen</h1>
       <div>
         <p>

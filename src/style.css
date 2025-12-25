@@ -85,7 +85,19 @@ button:hover {
   font-weight: bold;
 }
 
-@media (max-width: 639px) {
+.heroImage {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center 36%;
+  /* margin-bottom: 1.5em; */
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .heroImage {
+    height: 200px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
