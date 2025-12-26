@@ -17,7 +17,7 @@ export function Contact() {
           <h3>Helle</h3>
           <p>Koordinator på Hotell Mossbylund</p>
           <p>Ifall du har några frågor om bröllopslokalen osv.</p>
-          <p>Mail: helle@mosbylund.se</p>
+          <p>Mail: helle@mossbylund.se</p>
           <p>Telefon: +46XXXXXXXX</p>
         </div>
         <div>
@@ -26,13 +26,13 @@ export function Contact() {
             <div>
               <img src={emma} alt="Emma Kroon" class={styles.toastmadame_img} />
               <p>Emma Kroon</p>
-              <p>Mail: emma@mosbylund.se</p>
+              <p>Mail: emma@mossbylund.se</p>
               <p>Telefon: +46XXXXXXXX</p>
             </div>
             <div>
               <img src={maja} alt="Maja Carlsson" class={styles.toastmadame_img} />
               <p>Maja Carlsson</p>
-              <p>Mail: maja@mosbylund.se</p>
+              <p>Mail: maja@mossbylund.se</p>
               <p>Telefon: +46XXXXXXXX</p>
             </div>
           </div>
@@ -41,7 +41,7 @@ export function Contact() {
           <h3>Hotell Mossbylund</h3>
           <p>Bröllopsplats</p>
           <p>Ifall du vill boka rum eller något.</p>
-          <p>Mail: helle@mosbylund.se</p>
+          <p>Mail: helle@mossbylund.se</p>
           <p>Telefon: +46XXXXXXXX</p>
         </div>
         <div>
