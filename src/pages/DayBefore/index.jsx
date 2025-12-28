@@ -1,7 +1,9 @@
 import styles from "./DaysBefore.module.css";
-
+import { useEffect } from "preact/hooks";
 import couplesImage from "../../assets/hero_1.jpg";
 import { Header } from "../../components/Header/Header.jsx";
+
+import Map from "../../components/Map/Map";
 
 export function DayBefore() {
   return (
@@ -17,6 +19,7 @@ export function DayBefore() {
         <p>
           Ni kan boka på <a href="https://mossbylund.se/"> denna länk</a>.
         </p>
+        <Map />
       </div>
     </section>
   );
