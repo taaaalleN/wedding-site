@@ -1,4 +1,4 @@
-import "./leafletIconFix";
+// import "./leafletIconFix";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 

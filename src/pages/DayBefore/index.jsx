@@ -1,5 +1,3 @@
-import styles from "./DaysBefore.module.css";
-import { useEffect } from "preact/hooks";
 import couplesImage from "../../assets/hero_1.jpg";
 import { Header } from "../../components/Header/Header.jsx";
 
