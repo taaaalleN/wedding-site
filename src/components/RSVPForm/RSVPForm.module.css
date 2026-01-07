@@ -1,12 +1,46 @@
-.radio {
-  display: flex;
+:root {
+  --main-border-radius: 0.5em;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  /* margin: 0; */
+}
+
+label,
+legend {
+  font-weight: bold;
+  padding: 0;
+  margin-bottom: 0.5em;
+}
+
+input,
+textarea {
+  accent-color: var(--main-color);
+  margin: 0;
+}
+
+input,
+input:checked,
+input:focus-visible,
+textarea,
+button {
+  appearance: none;
+  border: none;
+  outline: none;
 }
 
 .rsvpForm {
+  display: grid;
+  gap: 1em;
   text-align: left;
+  padding: 2em;
 }
 
-.form-rows {
+/* .form-rows {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem 4rem;
@@ -56,55 +90,20 @@
   width: 10px;
   height: 10px;
   color: red;
-}
+} */
 
 .validIcon {
-  /* content: "✖";
   position: absolute;
-  right: -15px;
+  left: 100%;
   top: 50%;
-  width: 10px;
-  height: 10px; */
   color: green;
 }
 
-.errorLogo {
-  /* content: "✖";
+.errorIcon {
   position: absolute;
-  right: -15px;
+  left: 100%;
   top: 50%;
-  width: 10px;
-  height: 10px; */
   color: red;
-}
-
-#password.error + span + .error-span::after {
-  position: absolute;
-  bottom: -20px;
-  left: -5px;
-  content: "*Passwords is not using the correct format";
-  /* background-color: red; */
-  color: red;
-  padding: 0.75em;
-  font-size: 0.625em;
-}
-
-#password-confirm.error + span + .error-span::after {
-  position: absolute;
-  bottom: -20px;
-  left: -5px;
-  content: "*Passwords do not match";
-  /* background-color: red; */
-  color: red;
-  padding: 0.75em;
-  font-size: 0.625em;
-}
-
-.form-row label {
-  color: #000;
-  text-transform: uppercase;
-  font-family: "Roboto";
-  font-size: 0.875rem;
 }
 
 #button-row {
@@ -113,7 +112,7 @@
 }
 
 form button {
-  background-color: var(--main-green);
+  background-color: var(--main-color);
   color: #fff;
   border: 0;
   padding: 1rem 3rem;
@@ -124,6 +123,12 @@ form button {
 button {
   cursor: pointer;
   border-radius: var(--main-border-radius);
+  justify-self: start;
+  transition: background-color 250ms ease;
+}
+
+button:hover {
+  background-color: color-mix(in srgb, var(--main-color) 80%, transparent);
 }
 
 .textarea__wrapper textarea {
@@ -132,6 +137,80 @@ button {
   resize: none;
   width: 100%;
 }
+
+/* Testing starts */
+/* .form_group {
+  display: flex;
+}
+
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: relative;
+}
+
+input:checked::before {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: blue;
+  border-radius: 50%;
+} */
+/* Testing ends */
+
+/* New test starts */
+.name_container {
+  display: grid;
+  position: relative;
+}
+
+.name_container label {
+  display: block;
+}
+
+.radio {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1em;
+}
+
+.radio label {
+  padding: 0.5em 1em;
+  cursor: pointer;
+  outline: 1px solid rgb(112, 112, 112);
+}
+
+.rsvpForm label:hover {
+  outline: 2px solid var(--main-color);
+}
+
+label:has(input:checked) {
+  background-color: var(--main-color);
+  color: #fff;
+  outline: 1px solid var(--main-color);
+}
+
+input[type="text"],
+textarea {
+  padding: 0.5em 0.75em;
+}
+
+.rsvpForm label:has(input:focus-visible),
+textarea:focus-visible,
+button:focus-visible,
+input[type="text"]:focus-visible {
+  border: none;
+  outline: 2px solid red;
+}
+
+/* New test ends */
 
 @media (max-width: 768px) {
   #main {

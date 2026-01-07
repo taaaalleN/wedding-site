@@ -20,30 +20,32 @@ export function RSVPForm() {
     food: "",
   });
 
+  const [touchedState, setTouchedState] = useState({ name: false });
+
   const invitesCollectionRef = collection(db, "invites");
-  const [inviteList, setInviteList] = useState([]);
+  // const [inviteList, setInviteList] = useState([]);
 
-  const getInviteList = async () => {
-    try {
-      const data = await getDocs(invitesCollectionRef);
-      const filteredData = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setInviteList(filteredData);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const getInviteList = async () => {
+  //   try {
+  //     const data = await getDocs(invitesCollectionRef);
+  //     const filteredData = data.docs.map((doc) => ({
+  //       ...doc.data(),
+  //       id: doc.id,
+  //     }));
+  //     setInviteList(filteredData);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
-  useEffect(() => {
-    getInviteList();
-  }, []);
+  // useEffect(() => {
+  //   getInviteList();
+  // }, []);
 
   const onSubmitInvite = async () => {
     try {
       await addDoc(invitesCollectionRef, inputs);
-      getInviteList();
+      // getInviteList();
     } catch (err) {
       console.error(err);
     }
@@ -68,8 +70,8 @@ export function RSVPForm() {
 
   const renderValidationFeedback = (fieldName) => {
     const error = validationErrors[fieldName];
+    if (!touchedState[fieldName]) return;
     return error ? <span class={styles.errorIcon}>✖</span> : <span class={styles.validIcon}>✓</span>;
-    // return error ? <span style={{ color: "red" }}>{error}</span> : null;
   };
 
   const handleSubmit = (e) => {
@@ -84,16 +86,32 @@ export function RSVPForm() {
     setInputs(defaultState);
   };
 
+  const handleTouched = (e) => {
+    if (!e.target.value) return;
+    setTouchedState((prev) => ({
+      ...prev,
+      [e.target.name]: true,
+    }));
+  };
+
   const isFormValid = Object.values(validationErrors).every((error) => !error);
 
   return (
     <form class={styles.rsvpForm} onSubmit={handleSubmit}>
       <h2>Ge oss info!</h2>
-      <p>
-        <label for="name">Namn *:</label>
-        <input type="text" id="name" name="name" required value={inputs.name} onInput={handleChange} />
+      <div class={styles.name_container}>
+        <label for="name">Namn*</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          value={inputs.name}
+          onInput={handleChange}
+          onBlur={handleTouched}
+        />
         {renderValidationFeedback("name")}
-      </p>
+      </div>
       {/* <fieldset>
         <legend>Tar du med en +1?</legend>
         <div class={styles.radio}>
@@ -111,145 +129,95 @@ export function RSVPForm() {
           </div>
         </div>
       </fieldset> */}
-      <fieldset>
+      <fieldset class={styles.radio}>
         <legend>Alternativ för middag</legend>
-        <div class={styles.radio}>
-          <div>
-            <label for="meat">
-              <input
-                type="radio"
-                id="meat"
-                name="food"
-                value="Kött"
-                required
-                checked={inputs.food === "Kött"}
-                onChange={handleChange}
-              />
-              Kött
-            </label>
-          </div>
-          <div>
-            <label for="fish">
-              <input
-                type="radio"
-                id="fish"
-                name="food"
-                value="Fisk"
-                required
-                checked={inputs.food === "Fisk"}
-                onChange={handleChange}
-              />
-              Fisk
-            </label>
-          </div>
-          <div>
-            <label for="veg">
-              <input
-                type="radio"
-                id="veg"
-                name="food"
-                value="Veg"
-                required
-                checked={inputs.food === "Veg"}
-                onChange={handleChange}
-              />
-              Veg
-            </label>
-          </div>
-        </div>
+        <label for="meat">
+          <input
+            type="radio"
+            id="meat"
+            name="food"
+            value="Kött"
+            required
+            checked={inputs.food === "Kött"}
+            onChange={handleChange}
+          />
+          Kött
+        </label>
+        <label for="fish">
+          <input
+            type="radio"
+            id="fish"
+            name="food"
+            value="Fisk"
+            required
+            checked={inputs.food === "Fisk"}
+            onChange={handleChange}
+          />
+          Fisk
+        </label>
+        <label for="veg">
+          <input
+            type="radio"
+            id="veg"
+            name="food"
+            value="Veg"
+            required
+            checked={inputs.food === "Veg"}
+            onChange={handleChange}
+          />
+          Veg
+        </label>
       </fieldset>
-      <fieldset>
+      <fieldset class={styles.radio}>
         <legend>Vill du/ni samåka med buss från Malmö till Hotell Mossbylund?</legend>
-        <div class={styles.radio}>
-          <div>
-            <label for="yes">
-              <input
-                type="radio"
-                id="yes"
-                name="carpool"
-                value="Yes"
-                checked={inputs.carpool === "Yes"}
-                onChange={handleChange}
-              />
-              Ja
-            </label>
-          </div>
-          <div>
-            <label for="no">
-              <input
-                type="radio"
-                id="no"
-                name="carpool"
-                value="No"
-                checked={inputs.carpool === "No"}
-                onChange={handleChange}
-              />
-              Nej
-            </label>
-          </div>
-        </div>
+        <label>
+          <input type="radio" name="carpool" value="Yes" checked={inputs.carpool === "Yes"} onChange={handleChange} />
+          Ja
+        </label>
+        <label>
+          <input type="radio" name="carpool" value="No" checked={inputs.carpool === "No"} onChange={handleChange} />
+          Nej
+        </label>
       </fieldset>
-      <fieldset>
+      <fieldset class={styles.radio}>
         <legend>Vill du/ni sova över på Hotell Mossbylund?</legend>
-        <div class={styles.radio}>
-          <div>
-            <label for="yes">
-              <input
-                type="radio"
-                id="yes"
-                name="sleepover"
-                value="Yes"
-                checked={inputs.sleepover === "Yes"}
-                onChange={handleChange}
-              />
-              Ja
-            </label>
-          </div>
-          <div>
-            <label for="no">
-              <input
-                type="radio"
-                id="no"
-                name="sleepover"
-                value="No"
-                checked={inputs.sleepover === "No"}
-                onChange={handleChange}
-              />
-              Nej
-            </label>
-          </div>
-        </div>
+        <label>
+          <input
+            type="radio"
+            name="sleepover"
+            value="Yes"
+            checked={inputs.sleepover === "Yes"}
+            onChange={handleChange}
+          />
+          Ja
+        </label>
+        <label>
+          <input type="radio" name="sleepover" value="No" checked={inputs.sleepover === "No"} onChange={handleChange} />
+          Nej
+        </label>
       </fieldset>
-      <fieldset>
+      <fieldset class={styles.radio}>
         <legend>Vill du/ni checka in redan på fredag?</legend>
-        <div class={styles.radio}>
-          <div>
-            <label for="yes">
-              <input
-                type="radio"
-                id="yes"
-                name="arriveFriday"
-                value="Yes"
-                checked={inputs.arriveFriday === "Yes"}
-                onChange={handleChange}
-              />
-              Ja
-            </label>
-          </div>
-          <div>
-            <label for="no">
-              <input
-                type="radio"
-                id="no"
-                name="arriveFriday"
-                value="No"
-                checked={inputs.arriveFriday === "No"}
-                onChange={handleChange}
-              />
-              Nej
-            </label>
-          </div>
-        </div>
+        <label>
+          <input
+            type="radio"
+            name="arriveFriday"
+            value="Yes"
+            checked={inputs.arriveFriday === "Yes"}
+            onChange={handleChange}
+          />
+          Ja
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="arriveFriday"
+            value="No"
+            checked={inputs.arriveFriday === "No"}
+            onChange={handleChange}
+          />
+          Nej
+        </label>
       </fieldset>
       <div class={styles.textarea__wrapper}>
         <label for="songWishlist">Finns det några låtar du önskar ska spelas under discodansen?</label>

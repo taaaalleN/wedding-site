@@ -1,5 +1,7 @@
 // import "./style.css";
 import styles from "./Timeline.module.css";
+import { Bed } from "./Icons/Bed";
+import { ClinkingGlasses } from "./Icons/ClinkingGlasses";
 import { useEffect, useRef } from "preact/hooks";
 
 export function Timeline({ title }) {
@@ -28,6 +30,7 @@ export function Timeline({ title }) {
         <div class={styles.event} ref={addToRefs}>
           <span>Check-in</span>
           <span>14:30</span>
+          <Bed width="48px" height="48px" />
         </div>
         <div class={styles.event} ref={addToRefs}>
           <span>Vigsel</span>
@@ -36,6 +39,7 @@ export function Timeline({ title }) {
         <div class={styles.event} ref={addToRefs}>
           <span>Mingel</span>
           <span>15:30</span>
+          <ClinkingGlasses width="48px" height="48px" />
         </div>
         <div class={styles.event} ref={addToRefs}>
           <span>Middag</span>

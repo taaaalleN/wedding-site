@@ -1,9 +1,11 @@
 .header {
-  background-color: var(--main-green);
+  /* background-color: var(--main-green); */
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 10;
+  border-bottom: 2px solid var(--main-green);
 }
 
 .sticky {
@@ -13,21 +15,27 @@
 
 .header nav {
   display: flex;
-  background-color: var(--main-green);
+  /* background-color: var(--main-green); */
+  background-color: #fff;
 }
 
 .header a {
-  color: #fff;
+  /* color: #fff; */
+  color: var(--main-color);
   text-decoration: none;
   padding: 1rem 0.75rem;
+  text-transform: uppercase;
 }
 
 .header a.active {
-  background-color: #0005;
+  background-color: color-mix(in srgb, var(--main-color) 60%, transparent);
+  color: #fff;
 }
 
 .header a:hover {
-  background-color: #0008;
+  /* background-color: #0008; */
+  background-color: color-mix(in srgb, var(--main-color) 60%, transparent);
+  color: #fff;
 }
 
 .toggleNav {

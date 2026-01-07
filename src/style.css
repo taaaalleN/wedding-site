@@ -22,9 +22,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --main-green: #87958c;
+  /* --main-green: #87958c; */
+  --main-green: rgb(135, 149, 140);
   --main-green-alt: #c5d5cb;
   --main-blue: #9daeb7;
+
+  --main-color: var(--main-green);
 
   --font-titles: "Calligraffitti", cursive;
 }
@@ -92,6 +95,7 @@ button:hover {
   object-position: center 36%;
   /* margin-bottom: 1.5em; */
   margin-bottom: 0;
+  display: block;
 }
 
 @media (max-width: 768px) {

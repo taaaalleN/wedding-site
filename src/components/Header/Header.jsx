@@ -15,24 +15,29 @@ export function Header() {
 
   return (
     <header class={`${styles.header} ${scroll ? styles.sticky : ""}`}>
-      <button class={`${styles.toggleNav} ${navOpen ? styles.open : ""}`} onClick={() => setNavOpen((prev) => !prev)} aria-expanded={navOpen} aria-controls="main-nav">
+      <button
+        class={`${styles.toggleNav} ${navOpen ? styles.open : ""}`}
+        onClick={() => setNavOpen((prev) => !prev)}
+        aria-expanded={navOpen}
+        aria-controls="main-nav"
+      >
         {navOpen ? "Close" : "Open"}
       </button>
 
       <nav id="main-nav" class={navOpen ? styles.open : ""}>
-        <a href="/" class={url == "/" && "active"}>
+        <a href="/" class={url == "/" && styles.active}>
           Hem
         </a>
-        <a href="/innan-brollopsdagen" class={url == "/innan-brollopsdagen" && "active"}>
+        <a href="/innan-brollopsdagen" class={url == "/innan-brollopsdagen" && styles.active}>
           Innan bröllopsdagen
         </a>
-        <a href="/brollopsdagen" class={url == "/brollopsdagen" && "active"}>
+        <a href="/brollopsdagen" class={url == "/brollopsdagen" && styles.active}>
           Bröllopsdagen
         </a>
-        <a href="/osa" class={url == "/osa" && "active"}>
+        <a href="/osa" class={url == "/osa" && styles.active}>
           O.S.A
         </a>
-        <a href="/kontakt" class={url == "/kontakt" && "active"}>
+        <a href="/kontakt" class={url == "/kontakt" && styles.active}>
           Kontakt
         </a>
       </nav>

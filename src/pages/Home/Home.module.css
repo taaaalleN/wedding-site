@@ -13,6 +13,7 @@ p {
   object-position: center 36%;
   /* margin-bottom: 1.5em; */
   margin-bottom: 0;
+  display: block;
 }
 
 section {
