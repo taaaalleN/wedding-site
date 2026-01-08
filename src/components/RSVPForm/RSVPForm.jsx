@@ -5,8 +5,10 @@ import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase
 
 const defaultState = {
   name: "",
-  plus_one: "",
   food: "Kött",
+  plus_one: "",
+  second_person_name: "",
+  second_person_food: "Kött",
   carpool: "",
   sleepover: "",
   arriveFriday: "",
@@ -20,7 +22,7 @@ export function RSVPForm() {
     food: "",
   });
 
-  const [touchedState, setTouchedState] = useState({ name: false });
+  const [touchedState, setTouchedState] = useState({ name: false, secondPersonName: false });
 
   const invitesCollectionRef = collection(db, "invites");
   // const [inviteList, setInviteList] = useState([]);
@@ -99,75 +101,144 @@ export function RSVPForm() {
   return (
     <form class={styles.rsvpForm} onSubmit={handleSubmit}>
       <h2>Ge oss info!</h2>
-      <div class={styles.name_container}>
-        <label for="name">Namn*</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          required
-          value={inputs.name}
-          onInput={handleChange}
-          onBlur={handleTouched}
-        />
-        {renderValidationFeedback("name")}
-      </div>
-      {/* <fieldset>
-        <legend>Tar du med en +1?</legend>
-        <div class={styles.radio}>
-          <div>
-            <label for="yes">
-              <input type="radio" id="yes" name="plus_one" value="Yes" required checked={inputs.plus_one === "Yes"} onChange={handleChange} />
+      <div class={styles.persons_container}>
+        <div>
+          <div class={styles.name_container}>
+            <label for="name">Namn*</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              value={inputs.name}
+              onInput={handleChange}
+              onBlur={handleTouched}
+            />
+            {renderValidationFeedback("name")}
+          </div>
+          <fieldset class={styles.radio}>
+            <legend>Alternativ för middag</legend>
+            <label for="meat">
+              <input
+                type="radio"
+                id="meat"
+                name="food"
+                value="Kött"
+                required
+                checked={inputs.food === "Kött"}
+                onChange={handleChange}
+              />
+              Kött
+            </label>
+            <label for="fish">
+              <input
+                type="radio"
+                id="fish"
+                name="food"
+                value="Fisk"
+                required
+                checked={inputs.food === "Fisk"}
+                onChange={handleChange}
+              />
+              Fisk
+            </label>
+            <label for="veg">
+              <input
+                type="radio"
+                id="veg"
+                name="food"
+                value="Veg"
+                required
+                checked={inputs.food === "Veg"}
+                onChange={handleChange}
+              />
+              Veg
+            </label>
+          </fieldset>
+          <fieldset class={styles.radio}>
+            <legend>Tar du med en +1?</legend>
+            <label>
+              <input
+                type="radio"
+                name="plus_one"
+                value="Yes"
+                checked={inputs.plus_one === "Yes"}
+                onChange={handleChange}
+              />
               Ja
             </label>
-          </div>
-          <div>
-            <label for="no">
-              <input type="radio" id="no" name="plus_one" value="No" required checked={inputs.plus_one === "No"} onChange={handleChange} />
+            <label>
+              <input
+                type="radio"
+                name="plus_one"
+                value="No"
+                checked={inputs.plus_one === "No"}
+                onChange={handleChange}
+              />
               Nej
             </label>
-          </div>
+          </fieldset>
         </div>
-      </fieldset> */}
-      <fieldset class={styles.radio}>
-        <legend>Alternativ för middag</legend>
-        <label for="meat">
-          <input
-            type="radio"
-            id="meat"
-            name="food"
-            value="Kött"
-            required
-            checked={inputs.food === "Kött"}
-            onChange={handleChange}
-          />
-          Kött
-        </label>
-        <label for="fish">
-          <input
-            type="radio"
-            id="fish"
-            name="food"
-            value="Fisk"
-            required
-            checked={inputs.food === "Fisk"}
-            onChange={handleChange}
-          />
-          Fisk
-        </label>
-        <label for="veg">
-          <input
-            type="radio"
-            id="veg"
-            name="food"
-            value="Veg"
-            required
-            checked={inputs.food === "Veg"}
-            onChange={handleChange}
-          />
-          Veg
-        </label>
-      </fieldset>
+        {inputs.plus_one == "Yes" ? (
+          <div>
+            <div class={styles.name_container}>
+              <label for="second_person_name">Andra personens namn*</label>
+              <input
+                type="text"
+                id="second_person_name"
+                name="second_person_name"
+                required
+                value={inputs.second_person_name}
+                onInput={handleChange}
+                onBlur={handleTouched}
+              />
+              {renderValidationFeedback("name")}
+            </div>
+            <fieldset class={styles.radio}>
+              <legend>Protein för person 2</legend>
+              <label>
+                <input
+                  type="radio"
+                  id="meat"
+                  name="second_person_food"
+                  value="Kött"
+                  required
+                  checked={inputs.second_person_food === "Kött"}
+                  onChange={handleChange}
+                />
+                Kött
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  id="fish"
+                  name="second_person_food"
+                  value="Fisk"
+                  required
+                  checked={inputs.second_person_food === "Fisk"}
+                  onChange={handleChange}
+                />
+                Fisk
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  id="veg"
+                  name="second_person_food"
+                  value="Veg"
+                  required
+                  checked={inputs.second_person_food === "Veg"}
+                  onChange={handleChange}
+                />
+                Veg
+              </label>
+            </fieldset>
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+
       <fieldset class={styles.radio}>
         <legend>Vill du/ni samåka med buss från Malmö till Hotell Mossbylund?</legend>
         <label>

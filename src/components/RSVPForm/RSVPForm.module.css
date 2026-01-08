@@ -164,6 +164,12 @@ input:checked::before {
 /* Testing ends */
 
 /* New test starts */
+.persons_container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 3em;
+}
+
 .name_container {
   display: grid;
   position: relative;
@@ -216,6 +222,12 @@ input[type="text"]:focus-visible {
   #main {
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  .persons_container {
+    display: grid;
+    grid-auto-flow: row;
+    gap: 0;
   }
 }
 
