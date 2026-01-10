@@ -7,7 +7,6 @@ button,
 select,
 textarea {
   font: inherit;
-  /* margin: 0; */
 }
 
 label,
@@ -33,64 +32,12 @@ button {
   outline: none;
 }
 
-.rsvpForm {
+.rsvp_form {
   display: grid;
   gap: 1em;
   text-align: left;
   padding: 2em;
 }
-
-/* .form-rows {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem 4rem;
-  width: 600px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.form-row input {
-  border-radius: var(--main-border-radius);
-  border: 1px solid #efefef;
-  padding: 0.5rem 1rem;
-}
-
-.form-row input:focus {
-  outline: 1px solid var(--input-focus-border-color);
-  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);
-}
-
-.form-row input.valid {
-  border: 1px solid green;
-}
-
-.form-row input.valid + span::after {
-  content: "✓";
-  position: absolute;
-  right: -15px;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  color: green;
-}
-
-.form-row input.invalid {
-  border: 1px solid red;
-}
-
-.form-row input.invalid + span::after {
-  content: "✖";
-  position: absolute;
-  right: -15px;
-  top: 50%;
-  width: 10px;
-  height: 10px;
-  color: red;
-} */
 
 .validIcon {
   position: absolute;
@@ -106,29 +53,26 @@ button {
   color: red;
 }
 
-#button-row {
-  position: absolute;
-  top: 120%;
-}
-
-form button {
+.rsvp_button {
   background-color: var(--main-color);
+  cursor: pointer;
+  padding: 1rem 3rem;
   color: #fff;
   border: 0;
-  padding: 1rem 3rem;
   font-weight: bold;
   font-size: 1rem;
-}
-
-button {
-  cursor: pointer;
   border-radius: var(--main-border-radius);
   justify-self: start;
   transition: background-color 250ms ease;
 }
 
-button:hover {
+.rsvp_button:hover {
   background-color: color-mix(in srgb, var(--main-color) 80%, transparent);
+}
+
+.rsvp_button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .textarea__wrapper textarea {
@@ -138,36 +82,18 @@ button:hover {
   width: 100%;
 }
 
-/* Testing starts */
-/* .form_group {
-  display: flex;
-}
-
-input[type="radio"] {
-  width: 20px;
-  height: 20px;
-  background-color: red;
-  border-radius: 50%;
-  position: relative;
-}
-
-input:checked::before {
-  content: "";
-  position: absolute;
-  left: 25%;
-  top: 25%;
-  width: 50%;
-  height: 50%;
-  background-color: blue;
-  border-radius: 50%;
-} */
-/* Testing ends */
-
 /* New test starts */
-.persons_container {
+.section_wrapper {
   display: grid;
-  grid-auto-flow: column;
+  /* grid-auto-flow: column; */
+  grid-template-columns: 1fr 0fr;
+  transition: all 250ms ease;
   gap: 3em;
+}
+
+.section_wrapper.active {
+  /* grid-template-columns: 2fr 1fr; */
+  grid-template-columns: 1fr 1fr;
 }
 
 .name_container {
@@ -193,7 +119,7 @@ input:checked::before {
   outline: 1px solid rgb(112, 112, 112);
 }
 
-.rsvpForm fieldset label:hover {
+.rsvp_form fieldset label:hover {
   outline: 2px solid var(--main-color);
 }
 
@@ -208,12 +134,17 @@ textarea {
   padding: 0.5em 0.75em;
 }
 
-.rsvpForm label:has(input:focus-visible),
+.rsvp_form label:has(input:focus-visible),
 textarea:focus-visible,
 button:focus-visible,
 input[type="text"]:focus-visible {
   border: none;
   outline: 2px solid red;
+}
+
+.food_pref {
+  font-style: italic;
+  width: 100%;
 }
 
 /* New test ends */
@@ -224,10 +155,14 @@ input[type="text"]:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .persons_container {
+  .section_wrapper {
     display: grid;
     grid-auto-flow: row;
     gap: 0;
+  }
+
+  .section_wrapper.active {
+    grid-template-columns: auto;
   }
 }
 
