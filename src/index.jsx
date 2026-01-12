@@ -13,17 +13,15 @@ import "./style.css";
 export function App() {
   return (
     <LocationProvider>
-      {/* <Header /> */}
-      <main>
-        <Router>
-          <Route path="/" component={Home} />
-          <Route path="/innan-brollopsdagen" component={DayBefore} />
-          <Route path="/brollopsdagen" component={WeddingDay} />
-          <Route path="/osa" component={RSVP} />
-          <Route path="/kontakt" component={Contact} />
-          <Route default component={NotFound} />
-        </Router>
-      </main>
+      <Header />
+      <Router>
+        <Route path="/" component={Home} />
+        <Route path="/innan-brollopsdagen" component={DayBefore} />
+        <Route path="/brollopsdagen" component={WeddingDay} />
+        <Route path="/osa" component={RSVP} />
+        <Route path="/kontakt" component={Contact} />
+        <Route default component={NotFound} />
+      </Router>
     </LocationProvider>
   );
 }

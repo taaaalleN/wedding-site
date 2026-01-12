@@ -2,16 +2,12 @@ import styles from "./Contact.module.css";
 import emma from "../../assets/emma_kroon.jpg";
 import maja from "../../assets/maja_carlsson.jpeg";
 
-import couplesImage from "../../assets/hero_1.jpg";
-import { Header } from "../../components/Header/Header.jsx";
+import { Section } from "../../components/Section/Section";
 
 export function Contact() {
   return (
-    <section class={styles.contact__wrapper}>
-      <img class="heroImage" src={couplesImage} alt="Couple's image" />
-      <Header />
-      <h1>Kontakt</h1>
-      <div>
+    <div>
+      <Section title="Kontakt">
         <p>Här kan du hitta kontaktuppgifter till diverse personer som kan vara av intresse.</p>
         <div>
           <h3>Helle</h3>
@@ -51,7 +47,7 @@ export function Contact() {
           <p>Mail: paulau@gmail.com</p>
           <p>Telefon: +46XXXXXXXX</p>
         </div>
-      </div>
-    </section>
+      </Section>
+    </div>
   );
 }

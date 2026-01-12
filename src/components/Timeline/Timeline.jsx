@@ -4,7 +4,7 @@ import { Bed } from "./Icons/Bed";
 import { ClinkingGlasses } from "./Icons/ClinkingGlasses";
 import { useEffect, useRef } from "preact/hooks";
 
-export function Timeline({ title }) {
+export function Timeline() {
   const timelineRef = useRef(null);
   const eventsContainerRef = useRef(null);
   const eventRefs = useRef([]);
@@ -24,7 +24,6 @@ export function Timeline({ title }) {
 
   return (
     <div class={styles.timeline__container} ref={timelineRef}>
-      <h3>{title}</h3>
       <div class={styles.timeline}></div>
       <div class={styles.event_wrapper}>
         <div class={styles.event} ref={addToRefs}>

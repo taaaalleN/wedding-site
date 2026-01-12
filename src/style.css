@@ -14,7 +14,7 @@
   font-weight: 400;
 
   color: #222;
-  background-color: #ffffff;
+  background-color: var(--main-green-alt);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -48,31 +48,21 @@ h4 {
 
 body {
   margin: 0;
+  padding: 1em;
 }
 
 #app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-main {
+  /* display: flex;
   flex: auto;
-  display: flex;
-  /* align-items: center; */
-  justify-content: center;
-  max-width: 1280px;
+  align-items: center;
+  justify-content: center; */
   margin: 0 auto;
   text-align: center;
-  background-color: #fff;
   color: #333;
-  /* box-shadow: 0px 0px 20px #87958cb3; */
+  background-color: #fff;
   width: 100%;
-}
-
-section {
-  box-shadow: 0px 0px 20px #87958cb3;
-  width: 100%;
+  max-width: 1280px;
+  min-height: 100vh;
 }
 
 button:hover {
@@ -88,25 +78,8 @@ button:hover {
   font-weight: bold;
 }
 
-.heroImage {
-  height: 500px;
-  width: 100%;
-  object-fit: cover;
-  object-position: center 36%;
-  /* margin-bottom: 1.5em; */
-  margin-bottom: 0;
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .heroImage {
-    height: 200px;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     color: #fff;
-    background-color: var(--main-green-alt);
   }
 }

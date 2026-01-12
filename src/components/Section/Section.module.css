@@ -1,0 +1,30 @@
+.section {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 3em 5em;
+  box-shadow: 0px 0px 20px #87958cb3;
+}
+
+.section:nth-child(even) {
+  background-color: var(--main-green-alt);
+  box-shadow: none;
+  z-index: 0;
+  /* height: 400px; */
+}
+
+.section p {
+  /* font-size: 2.75rem; */
+  max-width: 80ch;
+  margin: 1em auto;
+}
+
+.text_block {
+  padding: 0 1em;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3em 1em;
+  }
+}

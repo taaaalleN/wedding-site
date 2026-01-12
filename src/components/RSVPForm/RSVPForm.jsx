@@ -3,6 +3,8 @@ import { useState, useEffect } from "preact/hooks";
 import { db } from "../../../firebase.js";
 import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 
+import DeviceDetection from "../../helpers/DeviceDetection";
+
 const defaultState = {
   name: "",
   food: "Kött",
@@ -100,6 +102,76 @@ export function RSVPForm() {
     }));
   };
 
+  const isDesktop = DeviceDetection();
+
+  const SecondPersonForm = () => (
+    <div class={`${styles.section} ${styles.right} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
+      {inputs.plus_one == "Yes" && (
+        <div class={styles.input_group}>
+          <div class={styles.name_container}>
+            <label for="second_person_name">Andra personens namn*</label>
+            <input
+              type="text"
+              id="second_person_name"
+              name="second_person_name"
+              required
+              value={inputs.second_person_name}
+              onInput={handleChange}
+              onBlur={handleTouched}
+            />
+            {renderValidationFeedback("second_person_name")}
+          </div>
+          <fieldset class={styles.radio}>
+            <legend>Protein för person 2</legend>
+            <label>
+              <input
+                type="radio"
+                id="meat"
+                name="second_person_food"
+                value="Kött"
+                required
+                checked={inputs.second_person_food === "Kött"}
+                onChange={handleChange}
+              />
+              Kött
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="fish"
+                name="second_person_food"
+                value="Fisk"
+                required
+                checked={inputs.second_person_food === "Fisk"}
+                onChange={handleChange}
+              />
+              Fisk
+            </label>
+            <label>
+              <input
+                type="radio"
+                id="veg"
+                name="second_person_food"
+                value="Veg"
+                required
+                checked={inputs.second_person_food === "Veg"}
+                onChange={handleChange}
+              />
+              Veg
+            </label>
+          </fieldset>
+          <label for="food_pref_2"></label>
+          <input
+            type="text"
+            id="food_pref_2"
+            placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+            class={styles.food_pref}
+          />
+        </div>
+      )}
+    </div>
+  );
+
   const isFormValid =
     Object.values(validationErrors).every((error) => !error) &&
     inputs.name !== "" &&
@@ -107,7 +179,6 @@ export function RSVPForm() {
 
   return (
     <form class={styles.rsvp_form} onSubmit={handleSubmit}>
-      <h2>Ge oss info!</h2>
       <div class={`${styles.section_wrapper} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
         <div class={`${styles.section} ${styles.left}`}>
           <div class={styles.input_group}>
@@ -196,6 +267,8 @@ export function RSVPForm() {
             </fieldset>
           </div>
 
+          {!isDesktop ? <SecondPersonForm /> : ""}
+
           <div class={styles.input_group}>
             <fieldset class={styles.radio}>
               <legend>Vill du/ni samåka med buss från Malmö till Hotell Mossbylund?</legend>
@@ -279,71 +352,7 @@ export function RSVPForm() {
           </div>
         </div>
 
-        <div class={`${styles.section} ${styles.right} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
-          {inputs.plus_one == "Yes" && (
-            <div class={styles.input_group}>
-              <div class={styles.name_container}>
-                <label for="second_person_name">Andra personens namn*</label>
-                <input
-                  type="text"
-                  id="second_person_name"
-                  name="second_person_name"
-                  required
-                  value={inputs.second_person_name}
-                  onInput={handleChange}
-                  onBlur={handleTouched}
-                />
-                {renderValidationFeedback("second_person_name")}
-              </div>
-              <fieldset class={styles.radio}>
-                <legend>Protein för person 2</legend>
-                <label>
-                  <input
-                    type="radio"
-                    id="meat"
-                    name="second_person_food"
-                    value="Kött"
-                    required
-                    checked={inputs.second_person_food === "Kött"}
-                    onChange={handleChange}
-                  />
-                  Kött
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    id="fish"
-                    name="second_person_food"
-                    value="Fisk"
-                    required
-                    checked={inputs.second_person_food === "Fisk"}
-                    onChange={handleChange}
-                  />
-                  Fisk
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    id="veg"
-                    name="second_person_food"
-                    value="Veg"
-                    required
-                    checked={inputs.second_person_food === "Veg"}
-                    onChange={handleChange}
-                  />
-                  Veg
-                </label>
-              </fieldset>
-              <label for="food_pref_2"></label>
-              <input
-                type="text"
-                id="food_pref_2"
-                placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
-                class={styles.food_pref}
-              />
-            </div>
-          )}
-        </div>
+        {isDesktop ? <SecondPersonForm /> : ""}
       </div>
 
       <button class={styles.rsvp_button} disabled={!isFormValid}>
