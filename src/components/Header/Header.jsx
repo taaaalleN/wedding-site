@@ -2,6 +2,8 @@ import styles from "./Header.module.css";
 import { useLocation } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
 
+import { Nav } from "../Nav/Nav";
+
 import couplesImage from "../../assets/hero_1.jpg";
 
 export function Header() {
@@ -16,37 +18,9 @@ export function Header() {
   }, []);
 
   return (
-    <div>
+    <header class={styles.header}>
       <img class={styles.heroImage} src={couplesImage} alt="Couple's image" />
-      {/* <header class={`${styles.header} ${scroll ? styles.sticky : ""}`}> */}
-      <header class={`${styles.header}`}>
-        <button
-          class={`${styles.toggleNav} ${navOpen ? styles.open : ""}`}
-          onClick={() => setNavOpen((prev) => !prev)}
-          aria-expanded={navOpen}
-          aria-controls="main-nav"
-        >
-          {navOpen ? "Close" : "Open"}
-        </button>
-
-        <nav id="main-nav" class={navOpen ? styles.open : ""}>
-          <a href="/" class={url == "/" && styles.active}>
-            Hem
-          </a>
-          <a href="/innan-brollopsdagen" class={url == "/innan-brollopsdagen" && styles.active}>
-            Innan bröllopsdagen
-          </a>
-          <a href="/brollopsdagen" class={url == "/brollopsdagen" && styles.active}>
-            Bröllopsdagen
-          </a>
-          <a href="/osa" class={url == "/osa" && styles.active}>
-            O.S.A
-          </a>
-          <a href="/kontakt" class={url == "/kontakt" && styles.active}>
-            Kontakt
-          </a>
-        </nav>
-      </header>
-    </div>
+      <Nav />
+    </header>
   );
 }

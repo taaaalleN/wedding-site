@@ -1,0 +1,109 @@
+.nav_links {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  /* align-items: center;
+  z-index: 3; */
+}
+
+@media (min-width: 641px) {
+  .nav_links:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: var(--main-color);
+    bottom: 0;
+  }
+}
+
+.nav_links a {
+  color: var(--main-color);
+  text-decoration: none;
+  padding: 1rem 0.75rem;
+  text-transform: uppercase;
+}
+
+.nav_links a.active {
+  /* background-color: color-mix(in srgb, var(--main-color) 60%, transparent);
+  color: #fff; */
+  font-weight: bold;
+}
+
+.nav_links a:hover {
+  /* background-color: #0008; */
+  background-color: color-mix(in srgb, var(--main-color) 60%, transparent);
+  color: #fff;
+}
+
+.toggleNav {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .toggleNav {
+    display: block;
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    z-index: 2;
+  }
+
+  .nav_menu .nav_links {
+    flex-direction: column;
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    left: revert;
+    width: 50%;
+    justify-content: revert;
+    padding-top: 3em;
+    transform: translateX(100vw);
+    transition: all 0.5s ease;
+    background-color: rgb(135, 149, 140, 0.6);
+    backdrop-filter: blur(10px);
+  }
+
+  .nav_menu .nav_links a {
+    color: #fff;
+  }
+
+  .nav_menu.open .nav_links {
+    transform: translateX(0);
+  }
+  /* .header {
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .toggleNav {
+    display: block;
+    padding: 1em 2em;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 1;
+    align-self: flex-end;
+    background-color: orange;
+  }
+
+  .header nav {
+    flex-direction: column;
+    position: fixed;
+    top: 43px;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    transform: translateX(100%);
+    transition: transform 250ms ease-in;
+  }
+
+  .header nav.open {
+    transform: translateX(0);
+  } */
+}

@@ -1,6 +1,6 @@
 .section {
-  position: relative;
-  z-index: 2;
+  /* position: relative; */
+  /* z-index: 2; */
   width: 100%;
   padding: 3em 5em;
   box-shadow: 0px 0px 20px #87958cb3;
@@ -9,7 +9,7 @@
 .section:nth-child(even) {
   background-color: var(--main-green-alt);
   box-shadow: none;
-  z-index: 0;
+  /* z-index: 0; */
   /* height: 400px; */
 }
 
