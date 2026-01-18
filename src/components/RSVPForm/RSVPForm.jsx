@@ -102,7 +102,10 @@ export function RSVPForm() {
     }));
   };
 
-  const isDesktop = DeviceDetection() >= 1000;
+  const [isDesktop, setIsDesktop] = useState(true);
+  if (typeof window !== "undefined") {
+    setIsDesktop(DeviceDetection() >= 1000);
+  }
 
   const SecondPersonForm = () => (
     <div class={`${styles.section} ${styles.right} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>

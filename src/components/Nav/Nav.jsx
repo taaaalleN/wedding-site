@@ -1,7 +1,6 @@
 import styles from "./Nav.module.css";
 import { useLocation } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
-import { DeviceDetection } from "../../helpers/DeviceDetection";
 
 function NavIcon() {
   return (
@@ -18,16 +17,6 @@ export function Nav() {
   const { url } = useLocation();
   const [scroll, setScroll] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
-
-  // useEffect(() => {
-  //   const onScroll = () => setScroll(window.scrollY > 50);
-  //   window.addEventListener("scroll", onScroll);
-  //   return () => window.removeEventListener("scroll", onScroll);
-  // }, []);
-
-  // useEffect(() => {
-  //   navOpen === true ? "" : "";
-  // }, [navOpen]);
 
   return (
     <nav class={`${styles.nav_menu} ${isNavOpen ? styles.open : ""}`}>

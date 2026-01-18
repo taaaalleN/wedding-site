@@ -7,15 +7,14 @@ import { Nav } from "../Nav/Nav";
 import couplesImage from "../../assets/hero_1.jpg";
 
 export function Header() {
-  const { url } = useLocation();
-  const [scroll, setScroll] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
+  // const [scroll, setScroll] = useState(false);
+  // const [navOpen, setNavOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScroll(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // useEffect(() => {
+  //   const onScroll = () => setScroll(window.scrollY > 50);
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, []);
 
   return (
     <header class={styles.header}>
