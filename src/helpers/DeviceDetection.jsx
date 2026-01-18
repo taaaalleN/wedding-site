@@ -1,8 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 
-export default function DeviceDetection() {
+export function DeviceDetection() {
   const [width, setWidth] = useState(window.innerWidth);
-
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
@@ -12,6 +11,5 @@ export default function DeviceDetection() {
       window.removeEventListener("resize", handleWindowSizeChange);
     };
   }, []);
-
-  return width >= 768;
+  return width;
 }

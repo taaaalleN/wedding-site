@@ -1,27 +1,43 @@
 import styles from "./Nav.module.css";
 import { useLocation } from "preact-iso";
 import { useState, useEffect } from "preact/hooks";
+import { DeviceDetection } from "../../helpers/DeviceDetection";
+
+function NavIcon() {
+  return (
+    <div id={styles.nav_icon3}>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  );
+}
 
 export function Nav() {
   const { url } = useLocation();
   const [scroll, setScroll] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScroll(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // useEffect(() => {
+  //   const onScroll = () => setScroll(window.scrollY > 50);
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => window.removeEventListener("scroll", onScroll);
+  // }, []);
+
+  // useEffect(() => {
+  //   navOpen === true ? "" : "";
+  // }, [navOpen]);
 
   return (
-    <nav class={`${styles.nav_menu} ${navOpen ? styles.open : ""}`}>
+    <nav class={`${styles.nav_menu} ${isNavOpen ? styles.open : ""}`}>
       <button
         class={`${styles.toggleNav}`}
-        onClick={() => setNavOpen((prev) => !prev)}
-        aria-expanded={navOpen}
+        onClick={() => setIsNavOpen((prev) => !prev)}
+        aria-expanded={isNavOpen}
         aria-controls="nav_menu"
       >
-        {navOpen ? "Close" : "Open"}
+        {isNavOpen ? "Menu" : "Menu"} {<NavIcon />}
       </button>
       <div class={styles.nav_links}>
         <a href="/" class={url == "/" && styles.active}>

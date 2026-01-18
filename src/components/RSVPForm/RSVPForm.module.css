@@ -149,7 +149,7 @@ input[type="text"]:focus-visible {
 
 /* New test ends */
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   #main {
     display: grid;
     grid-template-columns: 1fr;

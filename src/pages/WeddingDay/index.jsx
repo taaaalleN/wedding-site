@@ -1,12 +1,13 @@
 import styles from "./WeddingDay.module.css";
 import { Timeline } from "../../components/Timeline/Timeline";
 import { Section } from "../../components/Section/Section";
+import { Schedule } from "../../components/Schedule/Schedule";
 
 export function WeddingDay() {
   return (
     <div>
       <Section title="Bröllopsdagen">
-        <Timeline />
+        <Schedule />
       </Section>
       <Section title="Vi ska gifta oss!">
         <p>

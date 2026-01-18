@@ -1,0 +1,87 @@
+.schedule {
+  position: relative;
+}
+
+.schedule h3,
+.schedule p {
+  color: var(--main-color);
+}
+
+.schedule::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background-color: var(--main-color);
+  top: 0;
+  bottom: 0;
+}
+
+.event {
+  width: 50%;
+}
+
+.event:not(:first-child) {
+  margin-top: -3em;
+}
+
+.event:nth-child(even) {
+  margin-left: auto;
+}
+
+.event_info {
+  position: relative;
+  padding: 1em 0;
+}
+
+.event_title {
+  position: relative;
+}
+
+.event_title::before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 30%;
+  top: 50%;
+  right: 0;
+  background-color: var(--main-color);
+}
+
+.event:nth-child(even) .event_title::before {
+  right: revert;
+  left: 0;
+}
+
+.event_info::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 20%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--main-color);
+}
+
+.schedule p {
+  max-width: 50ch;
+}
+
+@media (max-width: 700px) {
+  .schedule::after {
+    content: none;
+  }
+
+  .event {
+    width: 100%;
+  }
+
+  .event:not(:first-child) {
+    margin-top: 0;
+  }
+
+  .event_title::before {
+    content: none;
+  }
+}

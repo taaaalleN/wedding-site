@@ -3,7 +3,7 @@ import { useState, useEffect } from "preact/hooks";
 import { db } from "../../../firebase.js";
 import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 
-import DeviceDetection from "../../helpers/DeviceDetection";
+import { DeviceDetection } from "../../helpers/DeviceDetection";
 
 const defaultState = {
   name: "",
@@ -102,7 +102,7 @@ export function RSVPForm() {
     }));
   };
 
-  const isDesktop = DeviceDetection();
+  const isDesktop = DeviceDetection() >= 1000;
 
   const SecondPersonForm = () => (
     <div class={`${styles.section} ${styles.right} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
