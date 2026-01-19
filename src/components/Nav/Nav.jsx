@@ -1,6 +1,6 @@
 import styles from "./Nav.module.css";
 import { useLocation } from "preact-iso";
-import { useState, useEffect } from "preact/hooks";
+import { useState, useEffect, useRef } from "preact/hooks";
 
 function NavIcon() {
   return (
@@ -18,8 +18,30 @@ export function Nav() {
   const [scroll, setScroll] = useState(false);
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    setIsNavOpen(false);
+  }, [url]);
+
+  function handleClickOutside(event) {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setIsNavOpen(false);
+    }
+  }
+
+  useEffect(() => {
+    if (isNavOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [isNavOpen]);
+
   return (
-    <nav class={`${styles.nav_menu} ${isNavOpen ? styles.open : ""}`}>
+    <nav class={`${styles.nav_menu} ${isNavOpen ? styles.open : ""}`} ref={navRef}>
       <button
         class={`${styles.toggleNav}`}
         onClick={() => setIsNavOpen((prev) => !prev)}

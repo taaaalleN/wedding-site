@@ -1,5 +1,9 @@
-import Map from "../../components/Map/Map";
+import { lazy, Suspense } from "preact/compat";
 import { Section } from "../../components/Section/Section";
+
+import "leaflet/dist/leaflet.css";
+
+const Map = lazy(() => import("../../components/Map/Map"));
 
 export function DayBefore() {
   return (
@@ -12,7 +16,9 @@ export function DayBefore() {
         <p>
           Ni kan boka på <a href="https://mossbylund.se/"> denna länk</a>.
         </p>
-        <Map />
+        <Suspense fallback={<div style={{ height: 400 }} />}>
+          <Map />
+        </Suspense>
       </Section>
     </div>
   );

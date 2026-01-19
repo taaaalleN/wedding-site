@@ -36,7 +36,6 @@ button {
   display: grid;
   gap: 1em;
   text-align: left;
-  padding: 2em;
 }
 
 .validIcon {

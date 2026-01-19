@@ -1,0 +1,9 @@
+.rsvp_page .rsvpForm {
+  padding: 2em;
+}
+
+@media (max-width: 640px) {
+  .rsvp_page .rsvpForm {
+    padding: 0;
+  }
+}
