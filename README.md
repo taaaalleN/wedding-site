@@ -24,6 +24,10 @@ Hem
 
 ## Problem
 
-- Sidladdning vid långsamt internet
-- Nav-menyn i mobil
-- Hosta sajten
+- Sidladdning vid långsamt internet ◻️
+- Nav-menyn i mobil ✅
+- Hosta sajten ✅
+- Leaflet-karta z-index ◻️
+- OSA-formulär meddelande vid submit ◻️
+- Lås sidan bakom kod ◻️
+- Fixa CSS (skapa custom-variabler, använd variablerna osv.) ◻️
