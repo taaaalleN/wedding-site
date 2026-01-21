@@ -31,3 +31,4 @@ Hem
 - OSA-formulär meddelande vid submit ◻️
 - Lås sidan bakom kod ◻️
 - Fixa CSS (skapa custom-variabler, använd variablerna osv.) ◻️
+- Översättning svenska/engelska
