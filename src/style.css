@@ -75,12 +75,34 @@ body.locked #app {
   flex-direction: column;
 }
 
-#verification_form button {
-  align-self: center;
+form {
+  & > button {
+    background-color: var(--main-color);
+    cursor: pointer;
+    padding: 1rem 3rem;
+    color: #fff;
+    border: 0;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: var(--main-border-radius);
+    justify-self: start;
+    transition: background-color 250ms ease;
+
+    &:hover {
+      background-color: color-mix(in srgb, var(--main-color) 80%, transparent);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
 
-button:hover {
-  cursor: pointer;
+/* Counter */
+.counter {
+  font-size: 2em;
+  font-weight: bold;
 }
 
 @media (prefers-color-scheme: dark) {

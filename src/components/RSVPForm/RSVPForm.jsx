@@ -358,9 +358,7 @@ export function RSVPForm() {
         {isDesktop ? <SecondPersonForm /> : ""}
       </div>
 
-      <button class={styles.rsvp_button} disabled={!isFormValid}>
-        Skicka in!
-      </button>
+      <button disabled={!isFormValid}>Skicka in!</button>
     </form>
   );
 }
