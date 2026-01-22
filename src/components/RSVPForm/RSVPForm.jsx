@@ -167,8 +167,11 @@ export function RSVPForm() {
           <input
             type="text"
             id="food_pref_2"
-            placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+            name="food_pref_2"
             class={styles.food_pref}
+            placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+            value={inputs.food_pref_2}
+            onChange={handleChange}
           />
         </div>
       )}
@@ -241,8 +244,11 @@ export function RSVPForm() {
             <input
               type="text"
               id="food_pref"
-              placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+              name="food_pref"
               class={styles.food_pref}
+              placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+              value={inputs.food_pref}
+              onChange={handleChange}
             />
 
             <fieldset class={styles.radio}>
@@ -325,7 +331,7 @@ export function RSVPForm() {
                 <input
                   type="radio"
                   name="arriveFriday"
-                  value="yes"
+                  value="Yes"
                   checked={inputs.arriveFriday === "Yes"}
                   onChange={handleChange}
                 />
