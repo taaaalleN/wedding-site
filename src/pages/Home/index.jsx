@@ -25,6 +25,7 @@ export function Home() {
       </Section>
       <Section title="">
         <Countdown targetDate={"2026-06-13"} countdownText={"Bröllopsdag om..."} completionText={"Bröllopsdags!"} />
+        <p>Glöm inte att styla dessa - stylingen i kopplad CSS-fil funkar inte</p>
       </Section>
       <Section title="Bröllopsdagen">
         <Timeline />
