@@ -70,12 +70,54 @@ body.locked #app {
   align-items: center;
 }
 
+/* Password verification form styling */
+
 #verification_form {
   display: flex;
   flex-direction: column;
 }
 
+/* General form related styling */
+
+:root {
+  --main-border-radius: 0.5em;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+label,
+legend {
+  font-weight: bold;
+  padding: 0;
+  margin-bottom: 0.5em;
+}
+
+input,
+textarea {
+  accent-color: var(--main-color);
+  margin: 0;
+}
+
+input,
+input:checked,
+input:focus-visible,
+textarea,
+button {
+  appearance: none;
+  border: none;
+  outline: none;
+}
+
 form {
+  display: grid;
+  gap: 1em;
+  text-align: left;
+
   & > button {
     background-color: var(--main-color);
     cursor: pointer;
@@ -96,6 +138,54 @@ form {
       opacity: 0.5;
       cursor: not-allowed;
     }
+  }
+
+  fieldset:has(input[type="radio"]) {
+    border: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1em;
+
+    label {
+      padding: 0.5em 1em;
+      cursor: pointer;
+      outline: 1px solid rgb(112, 112, 112);
+
+      &:hover {
+        outline: 2px solid var(--main-color);
+      }
+
+      &:has(input:checked) {
+        background-color: var(--main-color);
+        color: #fff;
+        outline: 1px solid var(--main-color);
+      }
+
+      &:has(input:focus-visible) {
+        border: none;
+        outline: 2px solid red;
+      }
+    }
+  }
+
+  input[type="text"],
+  textarea {
+    padding: 0.5em 0.75em;
+  }
+
+  textarea:focus-visible,
+  button:focus-visible,
+  input[type="text"]:focus-visible {
+    border: none;
+    outline: 2px solid red;
+  }
+
+  textarea {
+    display: flex;
+    flex-direction: column;
+    resize: none;
+    width: 100%;
   }
 }
 
