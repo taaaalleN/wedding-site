@@ -12,10 +12,8 @@
   color: red;
 }
 
-/* New test starts */
 .section_wrapper {
   display: grid;
-  /* grid-auto-flow: column; */
   grid-template-columns: 1fr 0fr;
   transition: all 250ms ease;
   grid-template-areas:
@@ -49,49 +47,10 @@
   display: block;
 }
 
-/* .radio {
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 1em;
-}
-
-.radio label {
-  padding: 0.5em 1em;
-  cursor: pointer;
-  outline: 1px solid rgb(112, 112, 112);
-}
-
-.rsvp_form fieldset label:hover {
-  outline: 2px solid var(--main-color);
-}
-
-label:has(input:checked) {
-  background-color: var(--main-color);
-  color: #fff;
-  outline: 1px solid var(--main-color);
-}
-
-input[type="text"],
-textarea {
-  padding: 0.5em 0.75em;
-}
-
-.rsvp_form label:has(input:focus-visible),
-textarea:focus-visible,
-button:focus-visible,
-input[type="text"]:focus-visible {
-  border: none;
-  outline: 2px solid red;
-} */
-
 .food_pref {
   font-style: italic;
   width: 100%;
 }
-
-/* New test ends */
 
 @media (max-width: 1000px) {
   #main {
