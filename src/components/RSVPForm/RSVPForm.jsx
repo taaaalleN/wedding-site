@@ -186,71 +186,71 @@ export function RSVPForm() {
   return (
     <form onSubmit={handleSubmit}>
       <div class={`${styles.section_wrapper} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
-        <div class={`${styles.section} ${styles.left}`}>
-          <div>
-            <div class={styles.name_container}>
-              <label for="name">Namn*</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                value={inputs.name}
-                onInput={handleChange}
-                onBlur={handleTouched}
-              />
-              {renderValidationFeedback("name")}
-            </div>
-            <fieldset>
-              <legend>Alternativ för middag</legend>
-              <label for="meat">
-                <input
-                  type="radio"
-                  id="meat"
-                  name="food"
-                  value="Kött"
-                  required
-                  checked={inputs.food === "Kött"}
-                  onChange={handleChange}
-                />
-                Kött
-              </label>
-              <label for="fish">
-                <input
-                  type="radio"
-                  id="fish"
-                  name="food"
-                  value="Fisk"
-                  required
-                  checked={inputs.food === "Fisk"}
-                  onChange={handleChange}
-                />
-                Fisk
-              </label>
-              <label for="veg">
-                <input
-                  type="radio"
-                  id="veg"
-                  name="food"
-                  value="Veg"
-                  required
-                  checked={inputs.food === "Veg"}
-                  onChange={handleChange}
-                />
-                Veg
-              </label>
-            </fieldset>
-            <label for="food_pref"></label>
+        <div class={styles.one}>
+          <div class={styles.name_container}>
+            <label for="name">Namn*</label>
             <input
               type="text"
-              id="food_pref"
-              name="food_pref"
-              class={styles.food_pref}
-              placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
-              value={inputs.food_pref}
-              onChange={handleChange}
+              id="name"
+              name="name"
+              required
+              value={inputs.name}
+              onInput={handleChange}
+              onBlur={handleTouched}
             />
+            {renderValidationFeedback("name")}
+          </div>
+          <fieldset>
+            <legend>Alternativ för middag</legend>
+            <label for="meat">
+              <input
+                type="radio"
+                id="meat"
+                name="food"
+                value="Kött"
+                required
+                checked={inputs.food === "Kött"}
+                onChange={handleChange}
+              />
+              Kött
+            </label>
+            <label for="fish">
+              <input
+                type="radio"
+                id="fish"
+                name="food"
+                value="Fisk"
+                required
+                checked={inputs.food === "Fisk"}
+                onChange={handleChange}
+              />
+              Fisk
+            </label>
+            <label for="veg">
+              <input
+                type="radio"
+                id="veg"
+                name="food"
+                value="Veg"
+                required
+                checked={inputs.food === "Veg"}
+                onChange={handleChange}
+              />
+              Veg
+            </label>
+          </fieldset>
+          <label for="food_pref"></label>
+          <input
+            type="text"
+            id="food_pref"
+            name="food_pref"
+            class={styles.food_pref}
+            placeholder="Här kan du skriva om du har några särskilda matpreferenser, allergier osv."
+            value={inputs.food_pref}
+            onChange={handleChange}
+          />
 
+          <div>
             <fieldset>
               <legend>Tar du med en +1?</legend>
               <label>
@@ -275,93 +275,85 @@ export function RSVPForm() {
               </label>
             </fieldset>
           </div>
-          {/* {!isDesktop ? <SecondPersonForm /> : ""} */}
+        </div>
 
-          <div>
-            <fieldset>
-              <legend>Vill du/ni samåka med buss från Malmö till Hotell Mossbylund?</legend>
-              <label>
-                <input
-                  type="radio"
-                  name="carpool"
-                  value="Yes"
-                  checked={inputs.carpool === "Yes"}
-                  onChange={handleChange}
-                />
-                Ja
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="carpool"
-                  value="No"
-                  checked={inputs.carpool === "No"}
-                  onChange={handleChange}
-                />
-                Nej
-              </label>
-            </fieldset>
-            <fieldset>
-              <legend>Vill du/ni sova över på Hotell Mossbylund?</legend>
-              <label>
-                <input
-                  type="radio"
-                  name="sleepover"
-                  value="Yes"
-                  checked={inputs.sleepover === "Yes"}
-                  onChange={handleChange}
-                />
-                Ja
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="sleepover"
-                  value="No"
-                  checked={inputs.sleepover === "No"}
-                  onChange={handleChange}
-                />
-                Nej
-              </label>
-            </fieldset>
-            <fieldset>
-              <legend>Vill du/ni checka in redan på fredag?</legend>
-              <label>
-                <input
-                  type="radio"
-                  name="arriveFriday"
-                  value="Yes"
-                  checked={inputs.arriveFriday === "Yes"}
-                  onChange={handleChange}
-                />
-                Ja
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  name="arriveFriday"
-                  value="No"
-                  checked={inputs.arriveFriday === "No"}
-                  onChange={handleChange}
-                />
-                Nej
-              </label>
-            </fieldset>
-            <div class={styles.textarea__wrapper}>
-              <label for="songWishlist">Finns det några låtar du önskar ska spelas under discodansen?</label>
-              <textarea
-                name="songWishlist"
-                id="songWishlist"
-                value={inputs.songWishlist}
-                onInput={handleChange}
-                rows={10}
-              ></textarea>
-            </div>
+        <div class={styles.two}>
+          <fieldset>
+            <legend>Vill du/ni samåka med buss från Malmö till Hotell Mossbylund?</legend>
+            <label>
+              <input
+                type="radio"
+                name="carpool"
+                value="Yes"
+                checked={inputs.carpool === "Yes"}
+                onChange={handleChange}
+              />
+              Ja
+            </label>
+            <label>
+              <input type="radio" name="carpool" value="No" checked={inputs.carpool === "No"} onChange={handleChange} />
+              Nej
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Vill du/ni sova över på Hotell Mossbylund?</legend>
+            <label>
+              <input
+                type="radio"
+                name="sleepover"
+                value="Yes"
+                checked={inputs.sleepover === "Yes"}
+                onChange={handleChange}
+              />
+              Ja
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="sleepover"
+                value="No"
+                checked={inputs.sleepover === "No"}
+                onChange={handleChange}
+              />
+              Nej
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend>Vill du/ni checka in redan på fredag?</legend>
+            <label>
+              <input
+                type="radio"
+                name="arriveFriday"
+                value="Yes"
+                checked={inputs.arriveFriday === "Yes"}
+                onChange={handleChange}
+              />
+              Ja
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="arriveFriday"
+                value="No"
+                checked={inputs.arriveFriday === "No"}
+                onChange={handleChange}
+              />
+              Nej
+            </label>
+          </fieldset>
+          <div class={styles.textarea__wrapper}>
+            <label for="songWishlist">Finns det några låtar du önskar ska spelas under discodansen?</label>
+            <textarea
+              name="songWishlist"
+              id="songWishlist"
+              value={inputs.songWishlist}
+              onInput={handleChange}
+              rows={10}
+            ></textarea>
           </div>
         </div>
 
-        {/* {isDesktop ? <SecondPersonForm /> : ""} */}
-        <div class={`${styles.section} ${styles.right} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
+        <div class={`${styles.section} ${styles.three} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
           {inputs.plus_one == "Yes" && (
             <div>
               <div class={styles.name_container}>
