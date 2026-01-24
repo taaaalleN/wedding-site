@@ -38,15 +38,6 @@
   grid-area: right;
 }
 
-.name_container {
-  display: grid;
-  position: relative;
-}
-
-.name_container label {
-  display: block;
-}
-
 .food_pref {
   font-style: italic;
   width: 100%;

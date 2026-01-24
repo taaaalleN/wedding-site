@@ -116,7 +116,7 @@ export function RSVPForm() {
     <form onSubmit={handleSubmit}>
       <div class={`${styles.section_wrapper} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
         <div class={styles.one}>
-          <div class={styles.name_container}>
+          <div class="form_group">
             <label for="name">Namn*</label>
             <input
               type="text"
@@ -179,7 +179,7 @@ export function RSVPForm() {
             onChange={handleChange}
           />
 
-          <div>
+          <>
             <fieldset>
               <legend>Tar du med en +1?</legend>
               <label>
@@ -203,7 +203,7 @@ export function RSVPForm() {
                 Nej
               </label>
             </fieldset>
-          </div>
+          </>
         </div>
 
         <div class={styles.two}>
@@ -270,7 +270,7 @@ export function RSVPForm() {
               Nej
             </label>
           </fieldset>
-          <div class={styles.textarea__wrapper}>
+          <>
             <label for="songWishlist">Finns det några låtar du önskar ska spelas under discodansen?</label>
             <textarea
               name="songWishlist"
@@ -279,13 +279,13 @@ export function RSVPForm() {
               onInput={handleChange}
               rows={10}
             ></textarea>
-          </div>
+          </>
         </div>
 
-        <div class={`${styles.section} ${styles.three} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
+        <div class={`${styles.three} ${inputs.plus_one == "Yes" ? styles.active : ""}`}>
           {inputs.plus_one == "Yes" && (
-            <div>
-              <div class={styles.name_container}>
+            <>
+              <div class="form_group">
                 <label for="second_person_name">Andra personens namn*</label>
                 <input
                   type="text"
@@ -347,7 +347,7 @@ export function RSVPForm() {
                 value={inputs.food_pref_2}
                 onChange={handleChange}
               />
-            </div>
+            </>
           )}
         </div>
       </div>
