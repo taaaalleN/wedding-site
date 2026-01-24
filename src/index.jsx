@@ -15,6 +15,7 @@ import { useState, useEffect } from "preact/hooks";
 export function App() {
   // const [isVerified, setIsVerified] = useState(localStorage.getItem("isVerified") || false);
   const [isVerified, setIsVerified] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("locked", !isVerified);
@@ -35,6 +36,10 @@ export function App() {
     }
   };
 
+  // const toggleShowPassword = () => {
+  //   setShowPassword(showPassword => !showPassword);
+  // }
+
   return (
     <>
       {isVerified ? (
@@ -53,8 +58,17 @@ export function App() {
         <dialog open>
           <form id="verification_form" onSubmit={verifyPassword}>
             <label htmlFor="password">Please enter the password specified in the invitation to access the site.</label>
-            <input id="password" name="password" />
-            <button>open sesame</button>
+            <input id="password" name="password" type={showPassword ? "text" : "password"} />
+            <label class="password_label">
+              <input
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword((showPassword) => !showPassword)}
+              >
+                {showPassword ? "Hide password" : "Show password"}
+              </input>
+            </label>
+            <button>Enter site</button>
           </form>
         </dialog>
       )}
