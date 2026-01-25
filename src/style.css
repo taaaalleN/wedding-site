@@ -125,31 +125,33 @@ input[type="password"] {
   border: 1px solid var(--main-color);
 }
 
+button {
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: #fff;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--main-color) 80%, transparent);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
 form {
   display: grid;
   gap: 1em;
   text-align: left;
 
   & > button {
-    background-color: var(--main-color);
-    cursor: pointer;
     padding: 1rem 3rem;
-    color: #fff;
-    border: 0;
     font-weight: bold;
     font-size: 1rem;
     border-radius: var(--main-border-radius);
     justify-self: start;
     transition: background-color 250ms ease;
-
-    &:hover {
-      background-color: color-mix(in srgb, var(--main-color) 80%, transparent);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
   }
 
   fieldset:has(input[type="radio"]) {
