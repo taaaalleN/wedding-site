@@ -3,7 +3,7 @@ import { useState, useEffect } from "preact/hooks";
 import { db } from "../../../firebase.js";
 import { getDocs, collection, addDoc, deleteDoc, updateDoc, doc } from "firebase/firestore";
 
-import { DeviceDetection } from "../../helpers/DeviceDetection";
+import Modal from "../Modal/Modal";
 
 const defaultState = {
   name: "",
@@ -28,36 +28,17 @@ export function RSVPForm() {
     second_person_food: "",
   });
 
+  const [status, setStatus] = useState({
+    status: "idle",
+    success: "Thanks for submitting! See you at the wedding.",
+    error: "Something went wrong. Please try again.",
+    loading: "Submitting…",
+  });
+
   const [touchedState, setTouchedState] = useState({ name: false, second_person_name: false });
+  const [isModalOpen, setModalOpen] = useState(false);
 
   const invitesCollectionRef = collection(db, "invites");
-  // const [inviteList, setInviteList] = useState([]);
-
-  // const getInviteList = async () => {
-  //   try {
-  //     const data = await getDocs(invitesCollectionRef);
-  //     const filteredData = data.docs.map((doc) => ({
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     }));
-  //     setInviteList(filteredData);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getInviteList();
-  // }, []);
-
-  const onSubmitInvite = async () => {
-    try {
-      await addDoc(invitesCollectionRef, inputs);
-      // getInviteList();
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
   // Regex validations
   const nameRegex = /^\D{2,}$/;
@@ -82,12 +63,19 @@ export function RSVPForm() {
     return error ? <span class={styles.errorIcon}>✖</span> : <span class={styles.validIcon}>✓</span>;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const formData = new FormData(e.currentTarget); // Från Preact-guiden - osäker på vad göra med denna
-    onSubmitInvite();
-    e.currentTarget.reset();
-    resetForm();
+
+    try {
+      await addDoc(invitesCollectionRef, inputs);
+      resetForm();
+      setStatus((prevState) => ({ ...prevState, status: "success" }));
+    } catch (err) {
+      setStatus((prevState) => ({ ...prevState, status: "error" }));
+      console.error(err);
+    }
+    setModalOpen(true);
+    // e.currentTarget.reset();
   };
 
   const resetForm = () => {
@@ -101,11 +89,6 @@ export function RSVPForm() {
       [e.target.name]: true,
     }));
   };
-
-  const [isDesktop, setIsDesktop] = useState(true);
-  if (typeof window !== "undefined") {
-    setIsDesktop(DeviceDetection() >= 1000);
-  }
 
   const isFormValid =
     Object.values(validationErrors).every((error) => !error) &&
@@ -353,6 +336,11 @@ export function RSVPForm() {
       </div>
 
       <button disabled={!isFormValid}>Skicka in!</button>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} hasCloseBtn={true}>
+          {status[status.status]}
+        </Modal>
+      )}
     </form>
   );
 }
