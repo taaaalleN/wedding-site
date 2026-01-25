@@ -4,19 +4,12 @@
 
 .timeline__container {
   position: relative;
-  /* height: 800px;
-  border: 1px dotted grey; */
 }
 
 .timeline {
   position: relative;
-  /* height: 100%; */
   height: var(--timeline-height);
   width: 100%;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-bottom: 2em; */
   text-align: center;
   color: #446463;
 }
@@ -55,25 +48,6 @@
   height: 100%;
   background-color: #333;
 }
-
-.event:nth-child(odd) {
-}
-
-.event:nth-child(odd)::after {
-  /* right: 0; */
-}
-
-.event:nth-child(even) {
-  /* margin-left: 50%; */
-}
-
-.event:nth-child(even)::after {
-  /* left: 0; */
-}
-
-/* .event:last-of-type {
-  margin-bottom: 1em;
-} */
 
 @media (max-width: 500px) {
   .event_wrapper {

@@ -48,6 +48,26 @@
   background-color: var(--main-color);
 }
 
+.event_title::after {
+  content: "";
+  position: absolute;
+  height: 0.75em;
+  width: 0.75em;
+  top: 50%;
+  left: 70%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.4);
+  background-color: var(--main-color);
+  /* background-color: #fff; */
+  border: 2px solid var(--main-color);
+}
+
+.event:nth-child(even) .event_title::after {
+  left: revert;
+  right: 70%;
+}
+
 .event:nth-child(even) .event_title::before {
   right: revert;
   left: 0;
