@@ -1,4 +1,6 @@
 import { LocationProvider, Router, Route, hydrate, prerender as ssr } from "preact-iso";
+import { useState, useEffect } from "preact/hooks";
+import "./style.css";
 
 import { Header } from "./components/Header/Header.jsx";
 import { Home } from "./pages/Home/index.jsx";
@@ -7,14 +9,10 @@ import { WeddingDay } from "./pages/WeddingDay/index.jsx";
 import { RSVP } from "./pages/RSVP/index.jsx";
 import { Contact } from "./pages/Contact/index.jsx";
 import { NotFound } from "./pages/_404.jsx";
-
-import "./style.css";
-
-import { useState, useEffect } from "preact/hooks";
+import Modal from "./components/Modal/Modal";
 
 export function App() {
-  // const [isVerified, setIsVerified] = useState(localStorage.getItem("isVerified") || false);
-  const [isVerified, setIsVerified] = useState(false);
+  const [isVerified, setIsVerified] = useState(localStorage.getItem("isVerified") || false);
   const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
@@ -36,10 +34,6 @@ export function App() {
     }
   };
 
-  // const toggleShowPassword = () => {
-  //   setShowPassword(showPassword => !showPassword);
-  // }
-
   return (
     <>
       {isVerified ? (
@@ -55,7 +49,7 @@ export function App() {
           </Router>
         </LocationProvider>
       ) : (
-        <dialog open>
+        <Modal isOpen={true} disableClose={true}>
           <form id="verification_form" onSubmit={verifyPassword}>
             <label htmlFor="password">Please enter the password specified in the invitation to access the site.</label>
             <input id="password" name="password" type={showPassword ? "text" : "password"} />
@@ -70,7 +64,7 @@ export function App() {
             </label>
             <button>Enter site</button>
           </form>
-        </dialog>
+        </Modal>
       )}
     </>
   );
