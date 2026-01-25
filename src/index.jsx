@@ -41,7 +41,7 @@ export function App() {
           <Header />
           <Router>
             <Route path="/" component={Home} />
-            <Route path="/innan-brollopsdagen" component={DayBefore} />
+            <Route path="/info" component={DayBefore} />
             <Route path="/brollopsdagen" component={WeddingDay} />
             <Route path="/osa" component={RSVP} />
             <Route path="/kontakt" component={Contact} />

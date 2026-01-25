@@ -52,13 +52,13 @@ export function Nav() {
       </button>
       <div class={styles.nav_links}>
         <a href="/" class={url == "/" && styles.active}>
-          Hem
-        </a>
-        <a href="/innan-brollopsdagen" class={url == "/innan-brollopsdagen" && styles.active}>
-          Innan bröllopsdagen
+          Välkommen
         </a>
         <a href="/brollopsdagen" class={url == "/brollopsdagen" && styles.active}>
-          Bröllopsdagen
+          Bröllopet
+        </a>
+        <a href="/info" class={url == "/info" && styles.active}>
+          Info
         </a>
         <a href="/osa" class={url == "/osa" && styles.active}>
           O.S.A
