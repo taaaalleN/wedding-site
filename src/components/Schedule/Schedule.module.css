@@ -59,7 +59,7 @@
   border-radius: 50%;
   box-shadow: 0 7px 7px 0px rgba(0, 0, 0, 0.4);
   background-color: var(--main-color);
-  /* background-color: #fff; */
+  /* background-color: transparent; */
   border: 2px solid var(--main-color);
 }
 

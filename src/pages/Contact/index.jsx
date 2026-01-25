@@ -7,7 +7,8 @@ import { Section } from "../../components/Section/Section";
 export function Contact() {
   return (
     <div>
-      <Section title="Kontakt">
+      <Section>
+        <h2>Kontakt</h2>
         <p>Här kan du hitta kontaktuppgifter till diverse personer som kan vara av intresse.</p>
         <div>
           <h3>Helle</h3>

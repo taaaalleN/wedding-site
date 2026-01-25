@@ -6,10 +6,12 @@ import { Schedule } from "../../components/Schedule/Schedule";
 export function WeddingDay() {
   return (
     <div>
-      <Section title="Bröllopsdagen" classNames={styles.schedule_wrapper}>
+      <Section classNames={styles.schedule_wrapper}>
+        <h2>Bröllopsdagen</h2>
         <Schedule />
       </Section>
-      <Section title="Vi ska gifta oss!">
+      <Section>
+        <h2>Vi ska gifta oss!</h2>
         <p>
           Du som fått vår inbjudan med länken till denna hemsida är en av de personer som, på ett eller annat vis, är de
           bästa i våra liv. Vi vill förstås att du ska komma till vårt bröllop och dela den dagen med oss!
