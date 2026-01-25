@@ -6,7 +6,7 @@ import { Schedule } from "../../components/Schedule/Schedule";
 export function WeddingDay() {
   return (
     <div>
-      <Section title="Bröllopsdagen">
+      <Section title="Bröllopsdagen" classNames={styles.schedule_wrapper}>
         <Schedule />
       </Section>
       <Section title="Vi ska gifta oss!">
