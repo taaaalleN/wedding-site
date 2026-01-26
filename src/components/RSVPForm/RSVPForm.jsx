@@ -338,7 +338,7 @@ export function RSVPForm() {
       <button disabled={!isFormValid}>Skicka in!</button>
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)} hasCloseBtn={true}>
-          {status[status.status]}
+          <p>{status[status.status]}</p>
         </Modal>
       )}
     </form>

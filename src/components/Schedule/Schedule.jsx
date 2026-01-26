@@ -6,7 +6,7 @@ function Event({ children }) {
 
 export function Schedule() {
   return (
-    <div class={styles.schedule}>
+    <div class={`${styles.schedule} white`}>
       <Event>
         <h3 class={styles.event_title}>Check-in</h3>
         <div className={styles.event_info}>

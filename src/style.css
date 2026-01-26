@@ -213,6 +213,32 @@ form {
   }
 }
 
+/* Global section styling */
+section {
+  width: 100%;
+  padding: 3em 5em;
+}
+
+section.white {
+  box-shadow: 0px 0px 20px #87958cb3;
+  /* background-color: #fff; */
+}
+
+section.colored {
+  background-color: var(--main-green-alt);
+}
+
+section p {
+  max-width: 80ch;
+  margin: 1em auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 3em 1em;
+  }
+}
+
 /* Counter */
 .counter {
   font-size: 2em;
