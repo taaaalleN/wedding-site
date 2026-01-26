@@ -23,7 +23,7 @@ const Modal = ({ children, isOpen, onClose = null, hasCloseBtn = false, disableC
   };
 
   const handleKeyDown = (e) => {
-    if (disableClose) {
+    if (e.key === "Escape" && disableClose) {
       e.preventDefault();
       return;
     }

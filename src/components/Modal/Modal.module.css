@@ -12,10 +12,10 @@ dialog {
   backdrop-filter: blur(3px);
 }
 
-.modal {
+/* .modal {
   button {
     position: absolute;
     top: 1rem;
     right: 1rem;
   }
-}
+} */
