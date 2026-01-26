@@ -35,12 +35,12 @@ const Modal = ({ children, isOpen, onClose = null, hasCloseBtn = false, disableC
 
   return (
     <dialog ref={modalRef} onKeyDown={handleKeyDown} class={styles.modal}>
+      {children}
       {hasCloseBtn && (
         <button onClick={handleCloseModal} class={styles.modalCloseBtn}>
           Close
         </button>
       )}
-      {children}
     </dialog>
   );
 };
