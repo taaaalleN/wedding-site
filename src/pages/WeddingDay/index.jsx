@@ -1,16 +1,14 @@
 import styles from "./WeddingDay.module.css";
-import { Timeline } from "../../components/Timeline/Timeline";
-import { Section } from "../../components/Section/Section";
 import { Schedule } from "../../components/Schedule/Schedule";
 
 export function WeddingDay() {
   return (
-    <div>
-      <Section classNames={styles.schedule_wrapper}>
+    <>
+      <section class={`${styles.schedule_wrapper} white`}>
         <h2>Bröllopsdagen</h2>
         <Schedule />
-      </Section>
-      <Section>
+      </section>
+      <section class="colored">
         <h2>Vi ska gifta oss!</h2>
         <p>
           Du som fått vår inbjudan med länken till denna hemsida är en av de personer som, på ett eller annat vis, är de
@@ -26,7 +24,7 @@ export function WeddingDay() {
           kontakta oss om ni undrar över något. Vi ser fram emot att se er på vårt bröllop!
         </p>
         <p>Kram, Laurita & Patrick</p>
-      </Section>
-    </div>
+      </section>
+    </>
   );
 }
