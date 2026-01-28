@@ -7,6 +7,11 @@
   color: var(--main-color);
 }
 
+.schedule p {
+  /* Remove global p styling to not have to do this? */
+  /* margin: 0.5em auto; */
+}
+
 .schedule::after {
   content: "";
   position: absolute;
@@ -19,6 +24,9 @@
 
 .event {
   width: 50%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
 }
 
 .event:not(:first-child) {
@@ -32,10 +40,13 @@
 .event_info {
   position: relative;
   padding: 1em 0;
+  /* padding-bottom: 1em; */
 }
 
 .event_title {
   position: relative;
+  font-size: 1.4rem;
+  align-self: normal;
 }
 
 .event_title::before {
@@ -82,6 +93,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--main-color);
+  opacity: 0.5;
 }
 
 .schedule p {
@@ -95,13 +107,19 @@
 
   .event {
     width: 100%;
+    padding: 1em 0;
   }
 
   .event:not(:first-child) {
     margin-top: 0;
   }
 
-  .event_title::before {
+  .event_info {
+    padding: 0 0 1em;
+  }
+
+  .event_title::before,
+  .event_title::after {
     content: none;
   }
 }

@@ -1,4 +1,6 @@
 .schedule_wrapper {
   background: url("../../assets/delphinium.png") no-repeat center rgba(255, 255, 255, 0.7);
   background-blend-mode: lighten;
+  padding-left: 0;
+  padding-right: 0;
 }
